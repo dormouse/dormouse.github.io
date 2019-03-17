@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简介本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown">
+<meta name="keywords" content="sphinx,xetex,pdf,reStructuredText,markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Sphinx 生成 PDF 文件">
+<meta property="og:url" content="https://dormouse.github.io/zh_cn/2013/rst-sphinx-pdf/index.html">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="简介本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2019-03-17T01:56:07.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 Sphinx 生成 PDF 文件">
+<meta name="twitter:description" content="简介本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dormouse.github.io/zh_cn/2013/rst-sphinx-pdf/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用 Sphinx 生成 PDF 文件 | Dormouse Hole</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dormouse Hole</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">The new hole since 2018</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2013/rst-sphinx-pdf/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dormouse Young"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用 Sphinx 生成 PDF 文件
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2013-01-27 21:42:37" itemprop="dateCreated datePublished" datetime="2013-01-27T21:42:37+08:00">2013-01-27</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/software/" itemprop="url" rel="index"><span itemprop="name">software</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown 格式的源文件。<br><a id="more"></a></p>
+<h1 id="安装编译环境"><a href="#安装编译环境" class="headerlink" title="安装编译环境"></a>安装编译环境</h1><p>本文的测试环境为 macOS Sierra 10.12.6, Python 3.6.1 。</p>
+<ul>
+<li>因为 Sphinx 需要 Python 2.7 或者 Python 3.4 以上版本的 Python ，所以首先要检查系统的 Python 是否安装， Python 的版本是否符合要求。如果想要使用 Python3 ，  macOS 下建议使用 brew 安装， Linux 下建议使用 Anaconda 。</li>
+<li>首先我们创建并激活一个 Python3 虚拟环境。打开终端，输入如下命令：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv rst_pdf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> rst_pdf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> bin/activate</span></span><br></pre></td></tr></table></figure>
+<p>   激活虚拟环境后提示符最前面会出现 <code>(rst_pdf)</code> 字样。</p>
+<ul>
+<li><p>安装 Sphinx-doc ：</p>
+<p>  <code>pip install -U Sphinx</code></p>
+</li>
+<li><p>安装 LaTeX 支持。 macOS 下建议安装 MacTeX ，安装命令为 <code>brew cask install mactex</code> ，或者到   <a href="https://www.tug.org/mactex/mactex-download.html" target="_blank" rel="noopener">https://www.tug.org/mactex/mactex-download.html</a> 下载 MacTeX.pkg 后运行安装。注意这个安装包在大小约有 3.14 G 。Linux 下建议安装  <a href="https://tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>。</p>
+</li>
+</ul>
+<h1 id="编写文档"><a href="#编写文档" class="headerlink" title="编写文档"></a>编写文档</h1><p>首先使用 <code>sphinx-quickstart</code> 命令创建一个 Sphinx 项目。这个命令会提出一系列的问题来帮助我们进行项目的设置，每个问题都有默认答案，如果想使用默认答案或者不知道如何回答，那么直接按回车键就可以了。不用担心回答错误，以后可以通过修改配置文件来变更相关设置。以下就是问题示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the Sphinx 1.6.4 quickstart utility.</span><br><span class="line"></span><br><span class="line">Please enter values for the following settings (just press Enter to</span><br><span class="line">accept a default value, if one is given in brackets).</span><br><span class="line"></span><br><span class="line">Enter the root path for documentation.</span><br><span class="line">&gt; Root path for the documentation [.]:</span><br><span class="line"></span><br><span class="line">You have two options for placing the build directory for Sphinx output.</span><br><span class="line">Either, you use a directory &quot;_build&quot; within the root path, or you separate</span><br><span class="line">&quot;source&quot; and &quot;build&quot; directories within the root path.</span><br><span class="line">&gt; Separate source and build directories (y/n) [n]: y</span><br><span class="line">说明：因为我们使用了 Python3 虚拟环境，所以这里我们选择把源文件单独存放在一个目录中。</span><br><span class="line"></span><br><span class="line">Inside the root directory, two more directories will be created; &quot;_templates&quot;</span><br><span class="line">for custom HTML templates and &quot;_static&quot; for custom stylesheets and other static</span><br><span class="line">files. You can enter another prefix (such as &quot;.&quot;) to replace the underscore.</span><br><span class="line">&gt; Name prefix for templates and static dir [_]:</span><br><span class="line"></span><br><span class="line">The project name will occur in several places in the built documentation.</span><br><span class="line">&gt; Project name: rst_pdf</span><br><span class="line">&gt; Author name(s): Dormouse Young</span><br><span class="line"></span><br><span class="line">Sphinx has the notion of a &quot;version&quot; and a &quot;release&quot; for the</span><br><span class="line">software. Each version can have multiple releases. For example, for</span><br><span class="line">Python the version is something like 2.5 or 3.0, while the release is</span><br><span class="line">something like 2.5.1 or 3.0a1.  If you don&apos;t need this dual structure,</span><br><span class="line">just set both to the same value.</span><br><span class="line">&gt; Project version []:</span><br><span class="line">&gt; Project release []:</span><br><span class="line"></span><br><span class="line">If the documents are to be written in a language other than English,</span><br><span class="line">you can select a language here by its language code. Sphinx will then</span><br><span class="line">translate text that it generates into that language.</span><br><span class="line"></span><br><span class="line">For a list of supported codes, see</span><br><span class="line">http://sphinx-doc.org/config.html#confval-language.</span><br><span class="line">&gt; Project language [en]: zh_CN</span><br><span class="line"></span><br><span class="line">The file name suffix for source files. Commonly, this is either &quot;.txt&quot;</span><br><span class="line">or &quot;.rst&quot;.  Only files with this suffix are considered documents.</span><br><span class="line">&gt; Source file suffix [.rst]:</span><br><span class="line"></span><br><span class="line">One document is special in that it is considered the top node of the</span><br><span class="line">&quot;contents tree&quot;, that is, it is the root of the hierarchical structure</span><br><span class="line">of the documents. Normally, this is &quot;index&quot;, but if your &quot;index&quot;</span><br><span class="line">document is a custom template, you can also set this to another filename.</span><br><span class="line">&gt; Name of your master document (without suffix) [index]:</span><br><span class="line"></span><br><span class="line">Sphinx can also add configuration for epub output:</span><br><span class="line">&gt; Do you want to use the epub builder (y/n) [n]:</span><br><span class="line"></span><br><span class="line">Please indicate if you want to use one of the following Sphinx extensions:</span><br><span class="line">&gt; autodoc: automatically insert docstrings from modules (y/n) [n]:</span><br><span class="line">&gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]:</span><br><span class="line">&gt; intersphinx: link between Sphinx documentation of different projects (y/n) [n]:</span><br><span class="line">&gt; todo: write &quot;todo&quot; entries that can be shown or hidden on build (y/n) [n]:</span><br><span class="line">&gt; coverage: checks for documentation coverage (y/n) [n]:</span><br><span class="line">&gt; imgmath: include math, rendered as PNG or SVG images (y/n) [n]:</span><br><span class="line">&gt; mathjax: include math, rendered in the browser by MathJax (y/n) [n]:</span><br><span class="line">&gt; ifconfig: conditional inclusion of content based on config values (y/n) [n]:</span><br><span class="line">&gt; viewcode: include links to the source code of documented Python objects (y/n) [n]:</span><br><span class="line">&gt; githubpages: create .nojekyll file to publish the document on GitHub pages (y/n) [n]:</span><br><span class="line"></span><br><span class="line">A Makefile and a Windows command file can be generated for you so that you</span><br><span class="line">only have to run e.g. `make html&apos; instead of invoking sphinx-build</span><br><span class="line">directly.</span><br><span class="line">&gt; Create Makefile? (y/n) [y]: y</span><br><span class="line">&gt; Create Windows command file? (y/n) [y]: n</span><br><span class="line"></span><br><span class="line">Creating file ./source/conf.py.</span><br><span class="line">Creating file ./source/index.rst.</span><br><span class="line">Creating file ./Makefile.</span><br><span class="line"></span><br><span class="line">Finished: An initial directory structure has been created.</span><br><span class="line"></span><br><span class="line">You should now populate your master file ./source/index.rst and create other documentation</span><br><span class="line">source files. Use the Makefile to build the docs, like so:</span><br><span class="line">   make builder</span><br><span class="line">where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.</span><br></pre></td></tr></table></figure>
+<p>你会发现目录中生成了两个目录和一个文件。<br><code>build</code> 目录用于存放输出的内容，比如我们以后要生成的 PDF 文件。<br><code>source</code> 目录用于存放用户的源文件。<br><code>Makefile</code> 是项目工程文件，方便我们以后生成各种格式的文件。</p>
+<p><code>source</code> 目录下有以下两个目录和两个文件。<br><code>_static</code> 目录用于存放用户自定义样式表或者其他静态文件。<br><code>_templates</code> 目录用于存放用户自定义的模版。<br><code>conf.py</code> 是项目配置文件，以后可以通过修改其中的内容来配置我们的项目。<br><code>index.rst</code> 是项目的索引文件，每个 sphinx-doc 项目都至少有一个索引文件。</p>
+<p>为了能够正确的生成中文 PDF 文件，我们需要修改 <code>conf.py</code> 的 <code>Options for LaTeX output</code> 一节中的 <code>latex_elements</code> 变量，修改为以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">latex_elements = &#123;</span><br><span class="line">    &apos;papersize&apos;: &apos;a4paper&apos;,</span><br><span class="line">    # Additional stuff for the LaTeX preamble.</span><br><span class="line">    &apos;preamble&apos;: &apos;&apos;&apos;</span><br><span class="line">\usepackage&#123;xeCJK&#125;</span><br><span class="line">\usepackage&#123;indentfirst&#125;</span><br><span class="line">\setlength&#123;\parindent&#125;&#123;2em&#125;</span><br><span class="line">\setCJKmainfont[BoldFont=STFangsong, ItalicFont=STKaiti]&#123;STSong&#125;</span><br><span class="line">\setCJKsansfont[BoldFont=STHeiti]&#123;STXihei&#125;</span><br><span class="line">\setCJKmonofont&#123;STFangsong&#125;</span><br><span class="line">&apos;&apos;&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在可以在 <code>source</code> 目录下添加我们自己的 reStructuredText 文件。例如本文的源文件就是 <code>rst-sphinx-pdf.rst</code> 文件。写完后要修改 <code>index.rst</code> 文件，把新添加的 <code>rst-sphinx-pdf.rst</code> 文件加入目录树。例如本文的<code>index.rst</code> 内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Welcome to rst_pdf&apos;s documentation!</span><br><span class="line">===================================</span><br><span class="line"></span><br><span class="line">.. toctree::</span><br><span class="line">   :maxdepth: 2</span><br><span class="line">   :caption: Contents:</span><br><span class="line"></span><br><span class="line">   rst_pdf</span><br></pre></td></tr></table></figure>
+<p>这里扩展名可以省略。</p>
+<h1 id="生成-PDF-文件"><a href="#生成-PDF-文件" class="headerlink" title="生成 PDF 文件"></a>生成 PDF 文件</h1><p>在项目根目录下使用 <code>make latex</code> 命令生成 tex 文件，最后在 <code>build/latex/</code> 目录下运行 <strong>两遍</strong> <code>xelatex rst_pdf.tex</code> 命令即可生成 PDF 文件。</p>
+<h1 id="一些-Tips"><a href="#一些-Tips" class="headerlink" title="一些 Tips"></a>一些 Tips</h1><h2 id="让-Sphinx-支持-markdown"><a href="#让-Sphinx-支持-markdown" class="headerlink" title="让 Sphinx 支持 markdown"></a>让 Sphinx 支持 markdown</h2><p>Sphinx 是可以支持 markdown 的。要让 Sphinx 支持 markdown ，需要按如下方法操作：</p>
+<ul>
+<li>安装 recommonmark ：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install recommonmark</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 Sphinx 配置文件中的 <code>source_parsers</code> 变量中添加 Markdown 解析器：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source_parsers = &#123;</span><br><span class="line">   &apos;.md&apos;: &apos;recommonmark.parser.CommonMarkParser&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>.md</code> 表示 Markdown 文件的扩展名，你可以替换为其他的扩展名。</p>
+<ul>
+<li>把 Markdown 文件的扩展名添加到配置文件的 <code>source_suffix</code> 变量中：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source_suffix = [&apos;.rst&apos;, &apos;.md&apos;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>CommonMark 支持添加自定义 Markdown 语法，详见<a href="http://recommonmark.readthedocs.io/en/latest/auto_structify.html" target="_blank" rel="noopener">recommonmark 文档</a>。</li>
+</ul>
+<h2 id="Linux-下安装-TeX-Live"><a href="#Linux-下安装-TeX-Live" class="headerlink" title="Linux 下安装 TeX Live"></a>Linux 下安装 TeX Live</h2><ul>
+<li>方法一</li>
+</ul>
+<p>使用 <code>apt-get install texlive-full</code> 命令安装。</p>
+<ul>
+<li>方法二</li>
+</ul>
+<p>去 tex 的 <a href="http://www.tug.org/texlive/acquire-netinstall.html" target="_blank" rel="noopener">老家</a> 下载<a href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz" target="_blank" rel="noopener">install-tl-unx.tar.gz</a> 。解压缩后，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./install-tl --gui=wizard</span><br></pre></td></tr></table></figure>
+<p>如果没有安装 wget ，则运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wget</span><br></pre></td></tr></table></figure>
+<p>安装输出大致如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">输入 “In” 开始安装，一共有2599个项目......</span><br><span class="line">Actions:</span><br><span class="line">&lt;I&gt; start installation to hard disk</span><br><span class="line">&lt;H&gt; help</span><br><span class="line">&lt;Q&gt; quit</span><br><span class="line"></span><br><span class="line">Enter command: i</span><br><span class="line">Installing to: /usr/local/texlive/2012</span><br><span class="line">Installing [0001/2599, time/total: ??:??/??:??]: 12many [376k]</span><br><span class="line">Installing [0002/2599, time/total: 00:09/10:05:07]: 2up [66k]</span><br><span class="line">Installing [0003/2599, time/total: 00:10/09:32:46]: Asana-Math [458k]</span><br><span class="line">Installing [0004/2599, time/total: 00:12/05:36:55]: ESIEEcv [137k]</span><br><span class="line">Installing [0005/2599, time/total: 00:15/06:05:39]: FAQ-en [5765k]</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">See /usr/local/texlive/2012/index.html</span><br><span class="line">for links to documentation.  The TeX Live web site</span><br><span class="line">contains updates and corrections: http://tug.org/texlive.</span><br><span class="line"></span><br><span class="line">TeX Live is a joint project of the TeX user groups around the world;</span><br><span class="line">please consider supporting it by joining the group best for you. The</span><br><span class="line">list of user groups is on the web at http://tug.org/usergroups.html.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Add /usr/local/texlive/2012/texmf/doc/man to MANPATH, if not dynamically determined.</span><br><span class="line">Add /usr/local/texlive/2012/texmf/doc/info to INFOPATH.</span><br><span class="line"></span><br><span class="line">Most importantly, add /usr/local/texlive/2012/bin/x86_64-linux</span><br><span class="line">to your PATH for current and future sessions.</span><br></pre></td></tr></table></figure>
+<p>设置路径，把以下内容放在 .bash_profile 中，然后运行 . ~/.bash_profile(ubuntu 下是 ~/.bashrc)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.<span class="built_in">local</span>/bin:<span class="variable">$HOME</span>/bin</span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/texlive/2012/bin/x86_64-linux:<span class="variable">$PATH</span>; <span class="built_in">export</span> PATH</span><br><span class="line">MANPATH=/usr/<span class="built_in">local</span>/texlive/2012/texmf/doc/man:<span class="variable">$MANPATH</span>; <span class="built_in">export</span> MANPATH</span><br><span class="line">INFOPATH=/usr/<span class="built_in">local</span>/texlive/2012/texmf/doc/info:<span class="variable">$INFOPATH</span>; <span class="built_in">export</span> INFOPATH</span><br></pre></td></tr></table></figure>
+<h2 id="如何查看系统中的字体"><a href="#如何查看系统中的字体" class="headerlink" title="如何查看系统中的字体"></a>如何查看系统中的字体</h2><p>在 macOS 中可以使用“字体册”应用来查看字体名称。在 Linux 中可以用 <code>fc-list</code> 命令来获得字体名称。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sphinx/" rel="tag"># sphinx</a>
+          
+            <a href="/tags/xetex/" rel="tag"># xetex</a>
+          
+            <a href="/tags/pdf/" rel="tag"># pdf</a>
+          
+            <a href="/tags/reStructuredText/" rel="tag"># reStructuredText</a>
+          
+            <a href="/tags/markdown/" rel="tag"># markdown</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zh_cn/2017/python-note-900-other/" rel="prev" title="Python note 900 - other">
+                Python note 900 - other <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dormouse Young</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装编译环境"><span class="nav-number">2.</span> <span class="nav-text">安装编译环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写文档"><span class="nav-number">3.</span> <span class="nav-text">编写文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成-PDF-文件"><span class="nav-number">4.</span> <span class="nav-text">生成 PDF 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些-Tips"><span class="nav-number">5.</span> <span class="nav-text">一些 Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#让-Sphinx-支持-markdown"><span class="nav-number">5.1.</span> <span class="nav-text">让 Sphinx 支持 markdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-下安装-TeX-Live"><span class="nav-number">5.2.</span> <span class="nav-text">Linux 下安装 TeX Live</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何查看系统中的字体"><span class="nav-number">5.3.</span> <span class="nav-text">如何查看系统中的字体</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

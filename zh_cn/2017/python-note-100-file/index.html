@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="打开文件打开文件示例: 1234567with open(&quot;/tmp/foo.txt&quot;) as file:    data = file.read()with open(&apos;examples/favorite-people.txt&apos;, encoding=&apos;utf-8&apos;) as a_file:    for a_line in a_file:        line_number += 1">
+<meta name="keywords" content="python,note,file">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Note 100 - File">
+<meta property="og:url" content="https://dormouse.github.io/zh_cn/2017/python-note-100-file/index.html">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="打开文件打开文件示例: 1234567with open(&quot;/tmp/foo.txt&quot;) as file:    data = file.read()with open(&apos;examples/favorite-people.txt&apos;, encoding=&apos;utf-8&apos;) as a_file:    for a_line in a_file:        line_number += 1">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2019-03-17T01:56:07.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Note 100 - File">
+<meta name="twitter:description" content="打开文件打开文件示例: 1234567with open(&quot;/tmp/foo.txt&quot;) as file:    data = file.read()with open(&apos;examples/favorite-people.txt&apos;, encoding=&apos;utf-8&apos;) as a_file:    for a_line in a_file:        line_number += 1">
+
+
+
+
+
+
+  <link rel="canonical" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python Note 100 - File | Dormouse Hole</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dormouse Hole</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">The new hole since 2018</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dormouse Young"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python Note 100 - File
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h1><p>打开文件示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"/tmp/foo.txt"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'examples/favorite-people.txt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> a_file:</span><br><span class="line">    <span class="keyword">for</span> a_line <span class="keyword">in</span> a_file:</span><br><span class="line">        line_number += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'&#123;:&gt;4&#125; &#123;&#125;'</span>.format(line_number, a_line.rstrip()))</span><br></pre></td></tr></table></figure>
+<p>使用字符串的 format() 方法可以打印出行号和行自身。格式说明符 {:&gt;4} 的意思是:使用最多四个空格使之右对齐，然后打印此参数。</p>
+<p>变量 a_line 是包括回车符等在内的完整的一行。字符串方法rstrip()可以去掉尾随的空白符，包括回车符。<br><a id="more"></a></p>
+<h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><p>写入文件示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(csvfile, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(linelist)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h1 id="关于-open-模式"><a href="#关于-open-模式" class="headerlink" title="关于 open 模式"></a>关于 open 模式</h1><p>open 的模式如下表：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以读方式打开</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以写方式打开</td>
+</tr>
+<tr>
+<td>a</td>
+<td>以追加模式打开 (从 EOF 开始, 必要时创建新文件)</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写模式打开</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>以读写模式打开 (参见 w )</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>以读写模式打开 (参见 a )</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制读模式打开</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制写模式打开 (参见 w )</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制追加模式打开 (参见 a )</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制读写模式打开 (参见 r+ )</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制读写模式打开 (参见 w+ )</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制读写模式打开 (参见 a+ )</td>
+</tr>
+</tbody>
+</table>
+<h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><ul>
+<li>fp.read([size]) #size为读取的长度，以byte为单位</li>
+<li>fp.readline([size])<br>#读一行，如果定义了size，有可能返回的只是一行的一部分</li>
+<li>fp.readlines([size])<br>#把文件每一行作为一个list的一个成员，并返回这个list。其实它的内部是通过循环调用readline()来实现的。如果提供size参数，size是表示读取内容的总长，也就是说可能只读到文件的一部分。</li>
+<li>fp.write(str) #把str写到文件中，write()并不会在str后加上一个换行符</li>
+<li>fp.writelines(seq)<br>#把seq的内容全部写到文件中(多行一次性写入)。这个函数也只是忠实地写入，不会在每行后面加上任何东西。</li>
+<li>fp.close()<br>#关闭文件。python会在一个文件不用后自动关闭文件，不过这一功能没有保证，最好还是养成自己关闭的习惯。<br>如果一个文件在关闭后还对其进行操作会产生ValueError</li>
+<li>fp.flush() #把缓冲区的内容写入硬盘</li>
+<li>fp.fileno() #返回一个长整型的”文件标签“</li>
+<li>fp.isatty() #文件是否是一个终端设备文件（unix系统中的）</li>
+<li>fp.tell() #返回文件操作标记的当前位置，以文件的开头为原点</li>
+<li>fp.next()<br>#返回下一行，并将文件操作标记位移到下一行。把一个file用于for … in<br>file这样的语句时，就是调用next()函数来实现遍历的。</li>
+<li>fp.seek(offset[,whence])<br>#将文件打操作标记移到offset的位置。这个offset一般是相对于文件的开头来计算的，一般为正数。但如果提供了whence参数就不一定了，whence可以为0表示从头开始计算，1表示以当前位置为原点计算。2表示以文件末尾为原点进行计算。需要注意，如果文件以a或a+的模式打开，每次进行写操作时，文件操作标记会自动返回到文件末尾。</li>
+<li>fp.truncate([size])<br>#把文件裁成规定的大小，默认的是裁到当前文件操作标记的位置。如果size比文件的大小还要大，依据系统的不同可能是不改变文件，也可能是用0把文件补到相应的大小，也可能是以一些随机的内容加上去。</li>
+</ul>
+<h1 id="shutil-操作"><a href="#shutil-操作" class="headerlink" title="shutil 操作"></a>shutil 操作</h1><p>复制文件：</p>
+<ul>
+<li>shutil.copyfile(“oldfile”,”newfile”) oldfile 和 newfile<br>都只能是文件。</li>
+<li>shutil.copy(“oldfile”,”newfile”) oldfile 只能是文件夹， newfile<br>可以是文件， 也可以是目标目录</li>
+</ul>
+<p>复制文件夹：</p>
+<ul>
+<li>shutil.copytree(“olddir”,”newdir”)<br>olddir和newdir都只能是目录，且newdir必须不存在</li>
+</ul>
+<p>移动文件（目录）：</p>
+<ul>
+<li>shutil.move(“oldpos”,”newpos”)</li>
+</ul>
+<p>删除目录：</p>
+<ul>
+<li>shutil.rmtree(“dir”) 空目录、有内容的目录都可以删</li>
+</ul>
+<h1 id="os-和-os-path-模块"><a href="#os-和-os-path-模块" class="headerlink" title="os 和 os.path 模块"></a>os 和 os.path 模块</h1><ul>
+<li>os.mkdir(“file”)：创建目录</li>
+<li>os.rmdir(“dir”)：只能删除空目录</li>
+<li>os.listdir(dirname)：列出dirname下的目录和文件</li>
+<li>os.getcwd()：获得当前工作目录</li>
+<li>os.curdir：返回当前目录（’.’)</li>
+<li>os.chdir(dirname)：改变工作目录到dirname</li>
+<li>os.remove(“file”)：删除文件</li>
+<li>os.rename(“oldname”,”newname”)：重命名文件（目录），文件或目录都是使用这条命令</li>
+<li>os.path.isdir(name)：判断name是不是一个目录，name不是目录就返回false</li>
+<li>os.path.isfile(name)：判断name是不是一个文件，不存在name也返回false</li>
+<li>os.path.exists(name)：判断是否存在文件或目录name</li>
+<li>os.path.getsize(name)：获得文件大小，如果name是目录返回0L</li>
+<li>os.path.abspath(name)：获得绝对路径</li>
+<li>os.path.normpath(path)：规范path字符串形式</li>
+<li>os.path.split(name)：分割文件名与目录（事实上，如果你完全使用目录，它也<br>会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）</li>
+<li>os.path.splitext()：分离文件名与扩展名，返回一个tuple：(“aaa”,”.txt”)</li>
+<li>os.path.join(path,name)：连接目录与文件名或目录</li>
+<li>os.path.basename(path)：返回文件名</li>
+<li>os.path.dirname(path)：返回文件路径</li>
+</ul>
+<h1 id="获得同一后缀名的文件"><a href="#获得同一后缀名的文件" class="headerlink" title="获得同一后缀名的文件"></a>获得同一后缀名的文件</h1><p>示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> glob.glob(<span class="string">"*.xls"</span>):</span><br><span class="line">     <span class="keyword">print</span> filename</span><br></pre></td></tr></table></figure>
+<h1 id="获得文件的权限"><a href="#获得文件的权限" class="headerlink" title="获得文件的权限"></a>获得文件的权限</h1><p>示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import <span class="built_in">stat</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import os</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(stat.S_IMODE(os.lstat(<span class="string">"soft"</span>).st_mode))</span></span><br><span class="line">'0755'</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">"soft"</span>)[stat.ST_MODE])</span></span><br><span class="line">'040755'</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">"soft"</span>).st_mode &amp; 0777)</span></span><br><span class="line">'0755'</span><br></pre></td></tr></table></figure>
+<p>常用常数:</p>
+<pre><code>S_IRWXU 00700   mask for file owner permissions
+S_IRUSR 00400   owner has read permission
+S_IWUSR 00200   owner has write permission
+S_IXUSR 00100   owner has execute permission
+S_IRWXG 00070   mask for group permissions
+S_IRGRP 00040   group has read permission
+S_IWGRP 00020   group has write permission
+S_IXGRP 00010   group has execute permission
+S_IRWXO 00007   mask for permissions for others (not in group)
+S_IROTH 00004   others have read permission
+S_IWOTH 00002   others have write permission
+S_IXOTH 00001   others have execute permission
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/file/" rel="tag"># file</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/zh_cn/2017/python-note-300-dict/" rel="next" title="Python Note 300 - Dict">
+                <i class="fa fa-chevron-left"></i> Python Note 300 - Dict
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/zh_cn/2018/write-blog-with-hexo/" rel="prev" title="使用 Hexo 写博客">
+                使用 Hexo 写博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Dormouse Young</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#打开文件"><span class="nav-number">1.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写入文件"><span class="nav-number">2.</span> <span class="nav-text">写入文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于-open-模式"><span class="nav-number">3.</span> <span class="nav-text">关于 open 模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关函数"><span class="nav-number">4.</span> <span class="nav-text">相关函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shutil-操作"><span class="nav-number">5.</span> <span class="nav-text">shutil 操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#os-和-os-path-模块"><span class="nav-number">6.</span> <span class="nav-text">os 和 os.path 模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获得同一后缀名的文件"><span class="nav-number">7.</span> <span class="nav-text">获得同一后缀名的文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获得文件的权限"><span class="nav-number">8.</span> <span class="nav-text">获得文件的权限</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
