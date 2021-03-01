@@ -20,18 +20,33 @@
     var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":{"enable":false,"show_result":false},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Tips 合并一个EXCEL 文件中的所有SHEET  1df=pd.concat(pd.read_excel(workbook_url,sheet_name=None),ignore_index=True)  合并一个目录下所有 EXCEL 文件中的所有SHEET  123df = pd.concat(    [pd.concat(pd.read_excel(wb, sheet_name=Non">
-<meta name="keywords" content="python,pandas,dataframe,excel">
+  <meta name="description" content="关于新手 Python 环境的选择Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选">
+<meta name="keywords" content="python,install">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pandas Notes">
+<meta property="og:title" content="新手安装 Python 环境（详细图解 Anaconda 安装）">
 <meta property="og:url" content="https://dormouse.github.io/zh_cn/2021/python-install/index.html">
 <meta property="og:site_name" content="Dormouse Hole">
-<meta property="og:description" content="Tips 合并一个EXCEL 文件中的所有SHEET  1df=pd.concat(pd.read_excel(workbook_url,sheet_name=None),ignore_index=True)  合并一个目录下所有 EXCEL 文件中的所有SHEET  123df = pd.concat(    [pd.concat(pd.read_excel(wb, sheet_name=Non">
+<meta property="og:description" content="关于新手 Python 环境的选择Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2021-02-28T14:19:34.377Z">
+<meta property="og:image" content="https://dormouse.github.io/zh_cn/2021/python-install/image%201.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217163952667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164133751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164243462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338687.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338700.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338740.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210217164338753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021021716593014.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2021-02-28T14:12:30.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pandas Notes">
-<meta name="twitter:description" content="Tips 合并一个EXCEL 文件中的所有SHEET  1df=pd.concat(pd.read_excel(workbook_url,sheet_name=None),ignore_index=True)  合并一个目录下所有 EXCEL 文件中的所有SHEET  123df = pd.concat(    [pd.concat(pd.read_excel(wb, sheet_name=Non">
+<meta name="twitter:title" content="新手安装 Python 环境（详细图解 Anaconda 安装）">
+<meta name="twitter:description" content="关于新手 Python 环境的选择Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选">
+<meta name="twitter:image" content="https://dormouse.github.io/zh_cn/2021/python-install/image%201.png">
 
 <link rel="canonical" href="https://dormouse.github.io/zh_cn/2021/python-install/">
 
@@ -46,7 +61,7 @@
   };
 </script>
 
-  <title>Pandas Notes | Dormouse Hole</title>
+  <title>新手安装 Python 环境（详细图解 Anaconda 安装） | Dormouse Hole</title>
   
 
 
@@ -198,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pandas Notes
+          新手安装 Python 环境（详细图解 Anaconda 安装）
         </h1>
 
         <div class="post-meta">
@@ -208,7 +223,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T00:00:00+08:00">2021-02-01</time>
+              <time title="Created: 2021-02-17 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-17T00:00:00+08:00">2021-02-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,81 +246,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
-<li>合并一个EXCEL 文件中的所有SHEET</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.concat(pd.read_excel(workbook_url,sheet_name=<span class="keyword">None</span>),ignore_index=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>合并一个目录下所有 EXCEL 文件中的所有SHEET</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.concat(</span><br><span class="line">    [pd.concat(pd.read_excel(wb, sheet_name=<span class="keyword">None</span>), ignore_index=<span class="keyword">True</span>) <span class="keyword">for</span> wb <span class="keyword">in</span> wbs],</span><br><span class="line">    ignore_index=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>看列属性</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>分类计数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gp = df[df[<span class="string">'时间'</span>]&gt;<span class="string">'2021-01-18'</span>].groupby(<span class="string">'目的地'</span>)</span><br><span class="line">gp[<span class="string">'姓名'</span>].count()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>数据透视</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pd.pivot_table(</span><br><span class="line">    df0118,</span><br><span class="line">    index=[<span class="string">'区'</span>],</span><br><span class="line">    values=[<span class="string">'姓名'</span>],</span><br><span class="line">    columns=[<span class="string">'分类'</span>],</span><br><span class="line">    aggfunc=[len],</span><br><span class="line">    fill_value=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按规定行和列输出</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(</span><br><span class="line">    np.arange(<span class="number">12</span>).reshape((<span class="number">4</span>,<span class="number">3</span>)),</span><br><span class="line">    columns=[<span class="string">'c'</span>,<span class="string">'a'</span>,<span class="string">'b'</span>],index=[<span class="string">'D'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'A'</span>])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>根据条件新建列并赋值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'some_col'</span>] = df[<span class="string">'one_col'</span>].apply(<span class="keyword">lambda</span> x: x <span class="keyword">if</span> len(x) == <span class="number">18</span> <span class="keyword">else</span> <span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改列名<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.rename(columns=&#123;<span class="string">'a'</span>:<span class="string">'A'</span>,<span class="string">'b'</span>:<span class="string">'B'</span>&#125;,inplace=<span class="keyword">True</span>)</span><br><span class="line">df.rename(str.lower, axis=<span class="string">'columns'</span>)</span><br><span class="line">df.columns = [<span class="string">'A'</span>, <span class="string">'B'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="日期时间"><a href="#日期时间" class="headerlink" title="日期时间"></a>日期时间</h1><ul>
-<li>从日期属性中提取年月日</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'year'</span>] = df[<span class="string">'date'</span>].dt.year</span><br><span class="line">df[<span class="string">'month'</span>] = df[<span class="string">'date'</span>].dt.month</span><br><span class="line">df[<span class="string">'day'</span>] = df[<span class="string">'date'</span>].dt.day</span><br></pre></td></tr></table></figure>
-<ul>
-<li>只保留日期，不要时间，即把日期置为0点</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'日期'</span>] = pd.to_datetime(df[<span class="string">'开始日期'</span>].dt.date)</span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">df[<span class="string">'日期'</span>] = df[<span class="string">'开始日期'</span>].dt.normalize()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按照指定格式打印时间，注意类型会由 <code>datetime64[ns]</code> 变为 <code>object</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'dd'</span>].dt.strftime(<span class="string">"%Y-%m-%d"</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>给日期加一天</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'two_date'</span>] = df[<span class="string">'one_date'</span>] + datetime.timedelta(days=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+        <h1 id="关于新手-Python-环境的选择"><a href="#关于新手-Python-环境的选择" class="headerlink" title="关于新手 Python 环境的选择"></a>关于新手 Python 环境的选择</h1><p>Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选择。 Anaconda 是一个 Python 发行套装。现在（2021年2月17日），最新版本的 Anaconda 包含 Python 3.8 和其他丰富的用于科学计算的包（conda, numpy, scipy, ipython notebook等）。 Anaconda 有以下主要特点：</p>
 <ol>
-<li>dt.date 和 dt.normalize()，他们都返回一个日期的 日期部分，即只包含年月日。但不同的是date返回的Series是object类型的，normalize()返回的Series是datetime64类型的。</li>
-<li>dt.year、dt.month、dt.day、dt.hour、dt.minute、dt.second、dt.week (dt.weekofyear和dt.week一样)分别返回日期的年、月、日、小时、分、秒及一年中的第几周</li>
-<li>dt.weekday（dt.dayofweek一样）返回一周中的星期几，0代表星期一，6代表星期天，dt.weekday_name返回星期几的英文。</li>
-<li>dt.dayofyear 返回一年的第几天，dt.quarter得到每个日期分别是第几个季度。</li>
-<li>dt.is_month_start和dt.is_month_end 判断日期是否是每月的第一天或最后一天，可以将month换成year和quarter相应的判断日期是否是每年或季度的第一天或最后一天.</li>
-<li>dt.is_leap_year 判断是否是闰年</li>
-<li>dt.month_name() 返回月份的英文名称.</li>
+<li>开源</li>
+<li>安装过程简单</li>
+<li>高性能使用Python和R语言</li>
+<li>免费的社区支持</li>
+<li>支持 Windows 、Linux 和 MAC 。</li>
 </ol>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><ul>
-<li>str.replace():替换字符串</li>
-</ul>
-<p>Series.str.replace(pat, repl, n=- 1, case=None, flags=0, regex=None)</p>
-<p>Replace each occurrence of pattern/regex in the Series/Index.</p>
-<p>Equivalent to str.replace() or re.sub(), depending on the regex value.</p>
-<h2 id="去空白"><a href="#去空白" class="headerlink" title="去空白"></a>去空白</h2><ul>
-<li>str.strip():删除左右两侧的空白（开始/结束）</li>
-<li>str.lstrip():删除左侧空白</li>
-<li>str.rstrip():删除右侧空白</li>
-</ul>
-<h2 id="大小写変换"><a href="#大小写変换" class="headerlink" title="大小写変换"></a>大小写変换</h2><ul>
-<li>str.lower():转换为小写</li>
-<li>str.upper():转换为大写</li>
-<li>str.capitalize():将第一个字母转换为大写，将其他字母转换为小写</li>
-<li>str.title():将单词的首字母转换为大写，其余转换为小写<br>将描述每个示例。</li>
-</ul>
+<a id="more"></a>
+<h1 id="下载-Anaconda"><a href="#下载-Anaconda" class="headerlink" title="下载 Anaconda"></a>下载 Anaconda</h1><p>Anaconda 的官方下载地址是：<a href="https://www.anaconda.com/products/individual#Downloads" target="_blank" rel="noopener">https://www.anaconda.com/products/individual#Downloads</a> ，<br>在这个页面点击 Python 3.8 64-Bit Graphical Installer (457 MB) 即可下载。<br>对于国内用户来说，官方下载地址的下载速度可能有些慢，我们可以在国内的镜像源来下载，比如清华大学开源软件镜像站：<br><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a><br>Anaconda3-2020.11-Windows-x86_64.exe</p>
+<h1 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h1><p>双击 Anaconda3-2020.11-Windows-x86_64.exe 会出现安装界面，点击 Next：<br><img src="image 1.png" alt="Anaconda 安装1"><br><img src="https://img-blog.csdnimg.cn/20210217163952667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装1"><br>点击 I Agree ：<br><img src="https://img-blog.csdnimg.cn/20210217164133751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装2"><br>这里选择第二个， All Users ：<br><img src="https://img-blog.csdnimg.cn/20210217164243462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装3"><br>然后点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装4"><br>点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装5"><br>把两个勾选框都选上：<br><img src="https://img-blog.csdnimg.cn/20210217164338687.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装5"><br>然后点击 Install ：<br><img src="https://img-blog.csdnimg.cn/20210217164338696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装6"><br>程序开始安装：<br><img src="https://img-blog.csdnimg.cn/20210217164338700.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装7"><br>安装完成，点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装8"><br>点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装9"><br>点击 Finish，安装结束：<br><img src="https://img-blog.csdnimg.cn/20210217164338740.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装10"><br>在 Windows 的形如菜单可以看到，最近添加里有两个新项目，一个是 Anaconda Powershell Prompt ，还有一个是 Jupyter Notebook 。<br><img src="https://img-blog.csdnimg.cn/20210217164338753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装11"></p>
+<p>我们打开 Anaconda Powershell Prompt ，输入：<br><code>&gt;&gt;&gt; Python -V</code><br>如果显示：<br><code>Python 3.8.5</code> ，那么就表示安装成功。<br><img src="https://img-blog.csdnimg.cn/2021021716593014.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装12"></p>
 
     </div>
 
@@ -316,9 +268,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/pandas/" rel="tag"># pandas</a>
-              <a href="/tags/dataframe/" rel="tag"># dataframe</a>
-              <a href="/tags/excel/" rel="tag"># excel</a>
+              <a href="/tags/install/" rel="tag"># install</a>
           </div>
 
         
@@ -327,13 +277,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean-flatten-list/" rel="prev" title="【Python茴香豆系列】之 拍扁列表">
-      <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 拍扁列表
+    <a href="/zh_cn/2021/python-bean-iter-dataframe-row/" rel="prev" title="【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行">
+      <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行
     </a></div>
-      <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean-count-dataframe-row/" rel="next" title="【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数">
-      【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -392,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期时间"><span class="nav-number">2.</span> <span class="nav-text">日期时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#替换"><span class="nav-number">3.1.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去空白"><span class="nav-number">3.2.</span> <span class="nav-text">去空白</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大小写変换"><span class="nav-number">3.3.</span> <span class="nav-text">大小写変换</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于新手-Python-环境的选择"><span class="nav-number">1.</span> <span class="nav-text">关于新手 Python 环境的选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载-Anaconda"><span class="nav-number">2.</span> <span class="nav-text">下载 Anaconda</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-Anaconda"><span class="nav-number">3.</span> <span class="nav-text">安装 Anaconda</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
