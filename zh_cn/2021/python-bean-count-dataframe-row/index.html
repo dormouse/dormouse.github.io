@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":{"enable":false,"show_result":false},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 一共有多少条数据？这大概是数据分析工作最基本的内容吧。这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。首先准备一个用于测试的 DataFrame 。">
+<meta name="keywords" content="python,pandas,dataframe,row">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数">
+<meta property="og:url" content="https://dormouse.github.io/zh_cn/2021/python-bean-count-dataframe-row/index.html">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 一共有多少条数据？这大概是数据分析工作最基本的内容吧。这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。首先准备一个用于测试的 DataFrame 。">
+<meta property="og:locale" content="zh_cn">
+<meta property="og:updated_time" content="2021-02-28T13:46:46.755Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数">
+<meta name="twitter:description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 一共有多少条数据？这大概是数据分析工作最基本的内容吧。这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。首先准备一个用于测试的 DataFrame 。">
+
+<link rel="canonical" href="https://dormouse.github.io/zh_cn/2021/python-bean-count-dataframe-row/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh_cn'
+  };
+</script>
+
+  <title>【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数 | Dormouse Hole</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2021/python-bean-count-dataframe-row/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-02-03 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-03T00:00:00+08:00">2021-02-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python-茴香豆/" itemprop="url" rel="index"><span itemprop="name">Python 茴香豆</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
+<p>一共有多少条数据？这大概是数据分析工作最基本的内容吧。<br>这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。<br>首先准备一个用于测试的 DataFrame 。这个 DataFrame 有 3 列，名称分别为 a 、 b 和 c ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame(&#123;<span class="string">'a'</span>:[<span class="keyword">None</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'b'</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], <span class="string">'c'</span>:[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h1 id="茴香豆一：-count"><a href="#茴香豆一：-count" class="headerlink" title="茴香豆一： count"></a>茴香豆一： count</h1><p>SQL 语句有一个 <code>SELECT count (*) FROM some_table</code> ，<br>DataFrame 同样有一个 <code>count</code> 函数可以用来计数，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">'a'</span>].count()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>等等，怎么会是 2 ？结果应该是三才对啊！原来， <code>count</code> 会把 <code>NaN</code> 剔除， a 列中有 <code>NaN</code> ，所以结果不对，我们看看 b 列就对了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">'b'</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>可是，我们不能保证每一次碰到的 b 列都没有空值啊，于是我们自己造一列出来：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">'aa'</span>] = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c  aa</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span>   <span class="number">1</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span>   <span class="number">1</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span>   <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">'aa'</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>好吧，至此，任务勉强完成了，但是……有一点丑陋。</p>
+<a id="more"></a>
+<h1 id="茴香豆二：-shape"><a href="#茴香豆二：-shape" class="headerlink" title="茴香豆二： shape"></a>茴香豆二： shape</h1><p>经过艰苦卓绝的学习，我发现 DataFrame 有一个 shape 函数。这是一个奇妙的函数，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape</span><br><span class="line">(<span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>于是，这样就可以得到结果了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape[<span class="number">0</span>]</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>厉害吧，神奇吧。<br>但是 shape 得到的是两个数字，我们只要一个数字，在这里，是不是有点浪费呢？</p>
+<h1 id="茴香豆三：-len"><a href="#茴香豆三：-len" class="headerlink" title="茴香豆三： len"></a>茴香豆三： len</h1><p>Python 有一个内置的 len ，一般来说，内置的东西总是高级一点。我们来试试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(df)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>那么这个 len 背后又是什么呢？在 IPython 中检查一下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [1]: df.__len__??</span><br><span class="line">Signature: df.__len__() -&gt; int</span><br><span class="line">Source:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span> -&gt; int:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns length of info axis, but here we use the index.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> len(self.index)</span><br></pre></td></tr></table></figure>
+<p>上面的 shape 又是什么呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [2]: df.shape??</span><br><span class="line">Type:        property</span><br><span class="line">Source:</span><br><span class="line"><span class="comment"># df.shape.fget</span></span><br><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shape</span><span class="params">(self)</span> -&gt; Tuple[int, int]:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return a tuple representing the dimensionality of the DataFrame.</span></span><br><span class="line"><span class="string">    ......</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> len(self.index), len(self.columns)</span><br></pre></td></tr></table></figure>
+<h1 id="茴香豆四：-index"><a href="#茴香豆四：-index" class="headerlink" title="茴香豆四： index"></a>茴香豆四： index</h1><p>从以上两个源代码可以看出，我们应当这样使用 len ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(df.index)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h1 id="茴香豆五：-再来三个"><a href="#茴香豆五：-再来三个" class="headerlink" title="茴香豆五： 再来三个"></a>茴香豆五： 再来三个</h1><p>山外青山楼外楼， Python 永远还有茴香豆。再来三个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.index.size</span><br><span class="line">len(df.axes[<span class="number">0</span>])</span><br><span class="line">df.pipe(len)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/pandas/" rel="tag"># pandas</a>
+              <a href="/tags/dataframe/" rel="tag"># dataframe</a>
+              <a href="/tags/row/" rel="tag"># row</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/zh_cn/2021/python-install/" rel="prev" title="Pandas Notes">
+      <i class="fa fa-chevron-left"></i> Pandas Notes
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/zh_cn/2021/python-bean-iter-dataframe-row/" rel="next" title="【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行">
+      【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#茴香豆一：-count"><span class="nav-number">1.</span> <span class="nav-text">茴香豆一： count</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#茴香豆二：-shape"><span class="nav-number">2.</span> <span class="nav-text">茴香豆二： shape</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#茴香豆三：-len"><span class="nav-number">3.</span> <span class="nav-text">茴香豆三： len</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#茴香豆四：-index"><span class="nav-number">4.</span> <span class="nav-text">茴香豆四： index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#茴香豆五：-再来三个"><span class="nav-number">5.</span> <span class="nav-text">茴香豆五： 再来三个</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
