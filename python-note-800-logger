@@ -284,12 +284,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/python-note-900-other" rel="prev" title="Python note 900 - other">
-      <i class="fa fa-chevron-left"></i> Python note 900 - other
+    <a href="/zh_cn/2013/rst-sphinx-pdf/" rel="prev" title="使用 Sphinx 生成 PDF 文件">
+      <i class="fa fa-chevron-left"></i> 使用 Sphinx 生成 PDF 文件
     </a></div>
       <div class="post-nav-item">
-    <a href="/python-note-700-sorting" rel="next" title="Python Note 700 - Sorting">
-      Python Note 700 - Sorting <i class="fa fa-chevron-right"></i>
+    <a href="/python-note-900-other" rel="next" title="Python note 900 - other">
+      Python note 900 - other <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

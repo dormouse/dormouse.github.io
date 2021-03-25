@@ -289,7 +289,7 @@
       <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行
     </a></div>
       <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean/python-bean-select-dataframe-row/" rel="next" title="【Python茴香豆系列】之 PANDAS 如何根据列的值来选取 DataFrame 的行">
+    <a href="/python-bean-select-dataframe-row" rel="next" title="【Python茴香豆系列】之 PANDAS 如何根据列的值来选取 DataFrame 的行">
       【Python茴香豆系列】之 PANDAS 如何根据列的值来选取 DataFrame 的行 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
