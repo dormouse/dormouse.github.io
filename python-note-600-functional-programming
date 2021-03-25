@@ -361,8 +361,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/zh_cn/2017/python-note/400str/" rel="next" title="Python Note 400 - String">
-                  Python Note 400 - String <i class="fa fa-chevron-right"></i>
+                <a href="/python-note-500-datetime" rel="next" title="Python note 500 - datetime">
+                  Python note 500 - datetime <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

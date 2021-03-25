@@ -352,7 +352,7 @@
 <p>使用 <code>hexo deploy</code> 命令来发布博客。</p>
 <p>更多内容参见： <a href="https://hexo.io/docs/deployment.html">发布</a></p>
 <h1 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h1><h2 id="NexT-Reloaded"><a href="#NexT-Reloaded" class="headerlink" title="NexT [Reloaded]"></a>NexT [Reloaded]</h2><p>next theme 已经移到<a href="https://github.com/theme-next/hexo-theme-next">新的地址</a><br>通过以下命令安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-path</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-path</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
 <p>在配置文件中设置 theme 的名称：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
@@ -398,57 +398,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>write</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数</title>
-    <url>//python-bean-count-dataframe-row</url>
-    <content><![CDATA[<p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
-<p>一共有多少条数据？这大概是数据分析工作最基本的内容吧。<br>这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。<br>首先准备一个用于测试的 DataFrame 。这个 DataFrame 有 3 列，名称分别为 a 、 b 和 c ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>:[<span class="literal">None</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&#x27;b&#x27;</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], <span class="string">&#x27;c&#x27;</span>:[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="茴香豆一：-count"><a href="#茴香豆一：-count" class="headerlink" title="茴香豆一： count"></a>茴香豆一： count</h1><p>SQL 语句有一个 <code>SELECT count (*) FROM some_table</code> ，<br>DataFrame 同样有一个 <code>count</code> 函数可以用来计数，示例如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;a&#x27;</span>].count()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<p>等等，怎么会是 2 ？结果应该是三才对啊！原来， <code>count</code> 会把 <code>NaN</code> 剔除， a 列中有 <code>NaN</code> ，所以结果不对，我们看看 b 列就对了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;b&#x27;</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>可是，我们不能保证每一次碰到的 b 列都没有空值啊，于是我们自己造一列出来：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;aa&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c  aa</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span>   <span class="number">1</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span>   <span class="number">1</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span>   <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;aa&#x27;</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>好吧，至此，任务勉强完成了，但是……有一点丑陋。</p>
-<span id="more"></span>
-
-
-<h1 id="茴香豆二：-shape"><a href="#茴香豆二：-shape" class="headerlink" title="茴香豆二： shape"></a>茴香豆二： shape</h1><p>经过艰苦卓绝的学习，我发现 DataFrame 有一个 shape 函数。这是一个奇妙的函数，示例如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape</span><br><span class="line">(<span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>于是，这样就可以得到结果了：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape[<span class="number">0</span>]</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>厉害吧，神奇吧。<br>但是 shape 得到的是两个数字，我们只要一个数字，在这里，是不是有点浪费呢？</p>
-<h1 id="茴香豆三：-len"><a href="#茴香豆三：-len" class="headerlink" title="茴香豆三： len"></a>茴香豆三： len</h1><p>Python 有一个内置的 len ，一般来说，内置的东西总是高级一点。我们来试试：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(df)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>那么这个 len 背后又是什么呢？在 IPython 中检查一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [1]: df.__len__??</span><br><span class="line">Signature: df.__len__() -&gt; int</span><br><span class="line">Source:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>) -&gt; int:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns length of info axis, but here we use the index.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.index)</span><br></pre></td></tr></table></figure>
-
-<p>上面的 shape 又是什么呢？</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [2]: df.shape??</span><br><span class="line">Type:        <span class="built_in">property</span></span><br><span class="line">Source:</span><br><span class="line"><span class="comment"># df.shape.fget</span></span><br><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shape</span>(<span class="params">self</span>) -&gt; Tuple[int, int]:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Return a tuple representing the dimensionality of the DataFrame.</span></span><br><span class="line"><span class="string">    ......</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(self.index), <span class="built_in">len</span>(self.columns)</span><br></pre></td></tr></table></figure>
-
-<h1 id="茴香豆四：-index"><a href="#茴香豆四：-index" class="headerlink" title="茴香豆四： index"></a>茴香豆四： index</h1><p>从以上两个源代码可以看出，我们应当这样使用 len ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(df.index)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="茴香豆五：-再来三个"><a href="#茴香豆五：-再来三个" class="headerlink" title="茴香豆五： 再来三个"></a>茴香豆五： 再来三个</h1><p>山外青山楼外楼， Python 永远还有茴香豆。再来三个：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.size</span><br><span class="line"><span class="built_in">len</span>(df.axes[<span class="number">0</span>])</span><br><span class="line">df.pipe(<span class="built_in">len</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python 茴香豆</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>pandas</tag>
-        <tag>dataframe</tag>
-        <tag>row</tag>
       </tags>
   </entry>
   <entry>
@@ -549,6 +498,57 @@
         <tag>pandas</tag>
         <tag>dataframe</tag>
         <tag>excel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数</title>
+    <url>//python-bean-count-dataframe-row</url>
+    <content><![CDATA[<p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
+<p>一共有多少条数据？这大概是数据分析工作最基本的内容吧。<br>这里，我们来聊一聊如何获取 Pandas 中 DataFrame 的行数。<br>首先准备一个用于测试的 DataFrame 。这个 DataFrame 有 3 列，名称分别为 a 、 b 和 c ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame(&#123;<span class="string">&#x27;a&#x27;</span>:[<span class="literal">None</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&#x27;b&#x27;</span>:[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], <span class="string">&#x27;c&#x27;</span>:[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆一：-count"><a href="#茴香豆一：-count" class="headerlink" title="茴香豆一： count"></a>茴香豆一： count</h1><p>SQL 语句有一个 <code>SELECT count (*) FROM some_table</code> ，<br>DataFrame 同样有一个 <code>count</code> 函数可以用来计数，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;a&#x27;</span>].count()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>等等，怎么会是 2 ？结果应该是三才对啊！原来， <code>count</code> 会把 <code>NaN</code> 剔除， a 列中有 <code>NaN</code> ，所以结果不对，我们看看 b 列就对了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;b&#x27;</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>可是，我们不能保证每一次碰到的 b 列都没有空值啊，于是我们自己造一列出来：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;aa&#x27;</span>] = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df</span><br><span class="line">     a  b  c  aa</span><br><span class="line"><span class="number">0</span>  NaN  <span class="number">4</span>  <span class="number">7</span>   <span class="number">1</span></span><br><span class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">5</span>  <span class="number">8</span>   <span class="number">1</span></span><br><span class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">6</span>  <span class="number">9</span>   <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[<span class="string">&#x27;aa&#x27;</span>].count()</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>好吧，至此，任务勉强完成了，但是……有一点丑陋。</p>
+<span id="more"></span>
+
+
+<h1 id="茴香豆二：-shape"><a href="#茴香豆二：-shape" class="headerlink" title="茴香豆二： shape"></a>茴香豆二： shape</h1><p>经过艰苦卓绝的学习，我发现 DataFrame 有一个 shape 函数。这是一个奇妙的函数，示例如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape</span><br><span class="line">(<span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>于是，这样就可以得到结果了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.shape[<span class="number">0</span>]</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>厉害吧，神奇吧。<br>但是 shape 得到的是两个数字，我们只要一个数字，在这里，是不是有点浪费呢？</p>
+<h1 id="茴香豆三：-len"><a href="#茴香豆三：-len" class="headerlink" title="茴香豆三： len"></a>茴香豆三： len</h1><p>Python 有一个内置的 len ，一般来说，内置的东西总是高级一点。我们来试试：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(df)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>那么这个 len 背后又是什么呢？在 IPython 中检查一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [1]: df.__len__??</span><br><span class="line">Signature: df.__len__() -&gt; int</span><br><span class="line">Source:</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span>(<span class="params">self</span>) -&gt; int:</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Returns length of info axis, but here we use the index.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.index)</span><br></pre></td></tr></table></figure>
+
+<p>上面的 shape 又是什么呢？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">In [2]: df.shape??</span><br><span class="line">Type:        <span class="built_in">property</span></span><br><span class="line">Source:</span><br><span class="line"><span class="comment"># df.shape.fget</span></span><br><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shape</span>(<span class="params">self</span>) -&gt; Tuple[int, int]:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Return a tuple representing the dimensionality of the DataFrame.</span></span><br><span class="line"><span class="string">    ......</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(self.index), <span class="built_in">len</span>(self.columns)</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆四：-index"><a href="#茴香豆四：-index" class="headerlink" title="茴香豆四： index"></a>茴香豆四： index</h1><p>从以上两个源代码可以看出，我们应当这样使用 len ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(df.index)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆五：-再来三个"><a href="#茴香豆五：-再来三个" class="headerlink" title="茴香豆五： 再来三个"></a>茴香豆五： 再来三个</h1><p>山外青山楼外楼， Python 永远还有茴香豆。再来三个：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.index.size</span><br><span class="line"><span class="built_in">len</span>(df.axes[<span class="number">0</span>])</span><br><span class="line">df.pipe(<span class="built_in">len</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python 茴香豆</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>pandas</tag>
+        <tag>dataframe</tag>
+        <tag>row</tag>
       </tags>
   </entry>
   <entry>
@@ -1041,6 +1041,56 @@ S_IXOTH 00001   others have execute permission
       </tags>
   </entry>
   <entry>
+    <title>Python Note 400 - String</title>
+    <url>/zh_cn/2017/python-note/400str/</url>
+    <content><![CDATA[<ul>
+<li>  capitalize() 首字符大写</li>
+<li>  center(width) 返回一个原字符串居中,并使用空格填充至长度 width 的新字串<span id="more"></span></li>
+<li>  count(str, beg=0, end=len(string)) 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</li>
+<li>  decode(encoding=’UTF-8’, errors=’strict’) 以 encoding 指定的编码格式解码string ，如果出错默认报一个 ValueError 的异常 ，除非 errors 指定的是 ‘ignore’ 或者 ‘replace’</li>
+<li>  encode(encoding=’UTF-8’, errors=’strict’) 以 encoding 指定的编码格式编码string，如果出错默认报一个 ValueError 的异常，除非 errors 指定的是 ‘ignore’ 或者 ‘replace’</li>
+<li>  endswith(obj, beg=0, end=len(string)) 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束 ，如果是，返回 True ,否则返回 False.</li>
+<li>  expandtabs(tabsize=8) 把字符串string中的tab符号转为空格,默认的空格数tabsize是 8.  -   find(str, beg=0, end=len(string)) 检测 str 是否包含在 string 中,如果 beg 和 end 指定范围，则检查是否包含在指定范围内 ，如果是返回开始的索引值，否则返回-1 -   index(str, beg=0, end=len(string)) 跟find()方法一样，只不过如果str不在 string中会报一个异常.</li>
+<li>  isalnum() 如果 string 至少有一个字符并且所有字符都是字母或数字则返回True,否则返回 False</li>
+<li>  isalpha() 如果 string 至少有一个字符并且所有字符都是字母则返回 True,否则返回 False</li>
+<li>  isdecimal() 如果 string 只包含十进制数字则返回True 否则返回 False.</li>
+<li>  isdigit() 如果 string 只包含数字则返回 True 否则返回 False.</li>
+<li>  islower() 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都 是小写，则返回True，否则返回 False</li>
+<li>  isnumeric() 如果 string 中只包含数字字符，则返回True，否则返回 False</li>
+<li>  isspace() 如果 string 中只包含空格，则返回True，否则返回 False.</li>
+<li>  istitle() 如果 string 是标题化的(见 title())则返回 True，否则返回 False</li>
+<li>  isupper() 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回True，否则返回 False -   join(seq) Merges (concatenates)以 string 作为分隔符，将 seq 中所有的元素(的字符串表示)合 并为一个新的字符串</li>
+<li>  ljust(width) 返回一个原字符串左对齐,并使用空格填充至长度width 的新字符串</li>
+<li>  lower() 转换 string 中所有大写字符为小写</li>
+<li>  lstrip() 截掉 string 左边的空格.</li>
+<li>  string.partition(str) 有点像 find()和 split()的结合体,从 str 出现的第一个位置起,把字符 串string分 成一个3元素的元组(string_pre_str,str,strig_post_str),如果 string中不包含str则string_pre_str == string.</li>
+<li>  replace(str1, str2,num=string.count(str1)) 把 string中的str1替换成str2,如果num指定，则替换不超过 num 次.</li>
+<li>  rfind(str, beg=0,end=len(string)) 类似于 find()函数，不过是从右边开始查找.</li>
+<li>  rindex( str, beg=0,end=len(string)) 类似于 index()，不过是从右边开始.</li>
+<li>  rjust(width) 返回一个原字符串右对齐,并使用空格填充至长度width 的新字符串</li>
+<li>  rpartition(str) 类似于 partition()函数,不过是从右边开始查找.</li>
+<li>  rstrip() 删除 string 字符串末尾的空格.</li>
+<li>  split(str=””, num=string.count(str)) 以 str 为分隔符切片string，如果num有指定值，则仅分隔num个子字符串</li>
+<li>  splitlines(num=string.count(‘n’)) 按照行分隔，返回一个包含各行作为元素的列表，如果num指定则仅切片 num 个行.</li>
+<li>  startswith(obj, beg=0,end=len(string)) 检查字符串是否是以 obj 开头，是则返回True，否则返回 False。如果beg 和 end 指定值 ，则在指定范围内检查.</li>
+<li>  strip([obj]) 在string 上执行 lstrip()和 rstrip().</li>
+<li>  swapcase() 翻转 string 中的大小写</li>
+<li>  title() 返回”标题化”的 string,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</li>
+<li>  translate(str, del=””) 根据 str 给出的表(包含 256 个字符)转换 string 的字符,要过滤掉的字符放到 del 参数中</li>
+<li>  upper() 转换 string 中的小写字母为大写</li>
+<li>  zfill(width) 返回长度为width的字符串,原字符串 string 右对齐,前面填充0</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Development</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>note</tag>
+        <tag>string</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python note 500 - datetime</title>
     <url>//python-note-500-datetime</url>
     <content><![CDATA[<p>Python 标准库中的 datetime 模块提供了各种对日期和时间的处理方法。</p>
@@ -1167,56 +1217,6 @@ S_IXOTH 00001   others have execute permission
         <tag>python</tag>
         <tag>note</tag>
         <tag>datetime</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python Note 400 - String</title>
-    <url>/zh_cn/2017/python-note/400str/</url>
-    <content><![CDATA[<ul>
-<li>  capitalize() 首字符大写</li>
-<li>  center(width) 返回一个原字符串居中,并使用空格填充至长度 width 的新字串<span id="more"></span></li>
-<li>  count(str, beg=0, end=len(string)) 返回 str 在 string 里面出现的次数，如果 beg 或者 end 指定则返回指定范围内 str 出现的次数</li>
-<li>  decode(encoding=’UTF-8’, errors=’strict’) 以 encoding 指定的编码格式解码string ，如果出错默认报一个 ValueError 的异常 ，除非 errors 指定的是 ‘ignore’ 或者 ‘replace’</li>
-<li>  encode(encoding=’UTF-8’, errors=’strict’) 以 encoding 指定的编码格式编码string，如果出错默认报一个 ValueError 的异常，除非 errors 指定的是 ‘ignore’ 或者 ‘replace’</li>
-<li>  endswith(obj, beg=0, end=len(string)) 检查字符串是否以 obj 结束，如果beg 或者 end 指定则检查指定的范围内是否以 obj 结束 ，如果是，返回 True ,否则返回 False.</li>
-<li>  expandtabs(tabsize=8) 把字符串string中的tab符号转为空格,默认的空格数tabsize是 8.  -   find(str, beg=0, end=len(string)) 检测 str 是否包含在 string 中,如果 beg 和 end 指定范围，则检查是否包含在指定范围内 ，如果是返回开始的索引值，否则返回-1 -   index(str, beg=0, end=len(string)) 跟find()方法一样，只不过如果str不在 string中会报一个异常.</li>
-<li>  isalnum() 如果 string 至少有一个字符并且所有字符都是字母或数字则返回True,否则返回 False</li>
-<li>  isalpha() 如果 string 至少有一个字符并且所有字符都是字母则返回 True,否则返回 False</li>
-<li>  isdecimal() 如果 string 只包含十进制数字则返回True 否则返回 False.</li>
-<li>  isdigit() 如果 string 只包含数字则返回 True 否则返回 False.</li>
-<li>  islower() 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都 是小写，则返回True，否则返回 False</li>
-<li>  isnumeric() 如果 string 中只包含数字字符，则返回True，否则返回 False</li>
-<li>  isspace() 如果 string 中只包含空格，则返回True，否则返回 False.</li>
-<li>  istitle() 如果 string 是标题化的(见 title())则返回 True，否则返回 False</li>
-<li>  isupper() 如果 string 中包含至少一个区分大小写的字符，并且所有这些(区分大小写的)字符都是大写，则返回True，否则返回 False -   join(seq) Merges (concatenates)以 string 作为分隔符，将 seq 中所有的元素(的字符串表示)合 并为一个新的字符串</li>
-<li>  ljust(width) 返回一个原字符串左对齐,并使用空格填充至长度width 的新字符串</li>
-<li>  lower() 转换 string 中所有大写字符为小写</li>
-<li>  lstrip() 截掉 string 左边的空格.</li>
-<li>  string.partition(str) 有点像 find()和 split()的结合体,从 str 出现的第一个位置起,把字符 串string分 成一个3元素的元组(string_pre_str,str,strig_post_str),如果 string中不包含str则string_pre_str == string.</li>
-<li>  replace(str1, str2,num=string.count(str1)) 把 string中的str1替换成str2,如果num指定，则替换不超过 num 次.</li>
-<li>  rfind(str, beg=0,end=len(string)) 类似于 find()函数，不过是从右边开始查找.</li>
-<li>  rindex( str, beg=0,end=len(string)) 类似于 index()，不过是从右边开始.</li>
-<li>  rjust(width) 返回一个原字符串右对齐,并使用空格填充至长度width 的新字符串</li>
-<li>  rpartition(str) 类似于 partition()函数,不过是从右边开始查找.</li>
-<li>  rstrip() 删除 string 字符串末尾的空格.</li>
-<li>  split(str=””, num=string.count(str)) 以 str 为分隔符切片string，如果num有指定值，则仅分隔num个子字符串</li>
-<li>  splitlines(num=string.count(‘n’)) 按照行分隔，返回一个包含各行作为元素的列表，如果num指定则仅切片 num 个行.</li>
-<li>  startswith(obj, beg=0,end=len(string)) 检查字符串是否是以 obj 开头，是则返回True，否则返回 False。如果beg 和 end 指定值 ，则在指定范围内检查.</li>
-<li>  strip([obj]) 在string 上执行 lstrip()和 rstrip().</li>
-<li>  swapcase() 翻转 string 中的大小写</li>
-<li>  title() 返回”标题化”的 string,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())</li>
-<li>  translate(str, del=””) 根据 str 给出的表(包含 256 个字符)转换 string 的字符,要过滤掉的字符放到 del 参数中</li>
-<li>  upper() 转换 string 中的小写字母为大写</li>
-<li>  zfill(width) 返回长度为width的字符串,原字符串 string 右对齐,前面填充0</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Development</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>note</tag>
-        <tag>string</tag>
       </tags>
   </entry>
   <entry>

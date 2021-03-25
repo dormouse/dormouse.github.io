@@ -275,7 +275,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-28 22:34:47" itemprop="dateModified" datetime="2021-02-28T22:34:47+08:00">2021-02-28</time>
+        <time title="Modified: 2021-03-25 23:01:37" itemprop="dateModified" datetime="2021-03-25T23:01:37+08:00">2021-03-25</time>
       </span>
 
   
@@ -598,94 +598,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-500-datetime">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/python-note-500-datetime" class="post-title-link" itemprop="url">Python note 500 - datetime</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Python 标准库中的 datetime 模块提供了各种对日期和时间的处理方法。</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: now = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: now</span><br><span class="line">Out[<span class="number">3</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">时间转换为字符串</span><br><span class="line">In [<span class="number">4</span>]: now.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">&#x27;2015-06-01 10:26:38&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: now.replace(hour=<span class="number">0</span>,minute=<span class="number">0</span>,second=<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">5</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: now - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">31</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">字符串转换为时间</span><br><span class="line">In [<span class="number">7</span>]: <span class="built_in">str</span> = <span class="string">&#x27;Fri, 19 May 2017 10:50:42&#x27;</span></span><br><span class="line">In [<span class="number">8</span>]: datetime.datetime.strptime(<span class="built_in">str</span>, <span class="string">&#x27;%a, %d %b %Y %H:%M:%S&#x27;</span>)</span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2017</span>, <span class="number">5</span>, <span class="number">19</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">struct time to timestamp</span><br><span class="line">time.mktime()</span><br><span class="line"></span><br><span class="line">time zone</span><br><span class="line">time.timezone</span><br><span class="line"></span><br><span class="line">time to loacl datetime</span><br><span class="line">datetime.fromtimestamp(time.mktime(struct_time)-time.timezone)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/python-note-500-datetime#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_cn">
     <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note/400str/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,6 +657,94 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/zh_cn/2017/python-note/400str/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh_cn">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-500-datetime">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/python-note-500-datetime" class="post-title-link" itemprop="url">Python note 500 - datetime</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Python 标准库中的 datetime 模块提供了各种对日期和时间的处理方法。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: now = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: now</span><br><span class="line">Out[<span class="number">3</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">时间转换为字符串</span><br><span class="line">In [<span class="number">4</span>]: now.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">&#x27;2015-06-01 10:26:38&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: now.replace(hour=<span class="number">0</span>,minute=<span class="number">0</span>,second=<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">5</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: now - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">31</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">字符串转换为时间</span><br><span class="line">In [<span class="number">7</span>]: <span class="built_in">str</span> = <span class="string">&#x27;Fri, 19 May 2017 10:50:42&#x27;</span></span><br><span class="line">In [<span class="number">8</span>]: datetime.datetime.strptime(<span class="built_in">str</span>, <span class="string">&#x27;%a, %d %b %Y %H:%M:%S&#x27;</span>)</span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2017</span>, <span class="number">5</span>, <span class="number">19</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">struct time to timestamp</span><br><span class="line">time.mktime()</span><br><span class="line"></span><br><span class="line">time zone</span><br><span class="line">time.timezone</span><br><span class="line"></span><br><span class="line">time to loacl datetime</span><br><span class="line">datetime.fromtimestamp(time.mktime(struct_time)-time.timezone)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/python-note-500-datetime#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
