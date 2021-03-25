@@ -23,7 +23,7 @@
   <meta name="description" content="关于新手 Python 环境的选择Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选">
 <meta property="og:type" content="article">
 <meta property="og:title" content="新手安装 Python 环境（详细图解 Anaconda 安装）">
-<meta property="og:url" content="https://dormouse.github.io/zh_cn/2021/python-install/index.html">
+<meta property="og:url" content="https://dormouse.github.io/python-install">
 <meta property="og:site_name" content="Dormouse Hole">
 <meta property="og:description" content="关于新手 Python 环境的选择Linux 操作系统和 MAC 一般是自带 Python 的，可以直接使用 Python 。而 Windows 操作一般是不带 Python 的。所以，在 Windows 中，必须先安装安装 Python 环境才能学习和使用 Python 。针对不同的需求，不同的环境，Python 环境的搭建方式是多种多样。对于新手来说，我觉得 Anaconda 是一个相当好的选">
 <meta property="og:locale" content="zh_CN">
@@ -48,7 +48,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210217163952667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70">
 
-<link rel="canonical" href="https://dormouse.github.io/zh_cn/2021/python-install/">
+<link rel="canonical" href="https://dormouse.github.io/python-install">
 
 
 <script id="page-configurations">
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2021/python-install/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-install">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -261,8 +261,9 @@
 <li>免费的社区支持</li>
 <li>支持 Windows 、Linux 和 MAC 。</li>
 </ol>
-<a id="more"></a>
-<h1 id="下载-Anaconda"><a href="#下载-Anaconda" class="headerlink" title="下载 Anaconda"></a>下载 Anaconda</h1><p>Anaconda 的官方下载地址是：<a href="https://www.anaconda.com/products/individual#Downloads" target="_blank" rel="noopener">https://www.anaconda.com/products/individual#Downloads</a> ，<br>在这个页面点击 Python 3.8 64-Bit Graphical Installer (457 MB) 即可下载。<br>对于国内用户来说，官方下载地址的下载速度可能有些慢，我们可以在国内的镜像源来下载，比如清华大学开源软件镜像站：<br><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a><br>Anaconda3-2020.11-Windows-x86_64.exe</p>
+<span id="more"></span>
+
+<h1 id="下载-Anaconda"><a href="#下载-Anaconda" class="headerlink" title="下载 Anaconda"></a>下载 Anaconda</h1><p>Anaconda 的官方下载地址是：<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a> ，<br>在这个页面点击 Python 3.8 64-Bit Graphical Installer (457 MB) 即可下载。<br>对于国内用户来说，官方下载地址的下载速度可能有些慢，我们可以在国内的镜像源来下载，比如清华大学开源软件镜像站：<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a><br>Anaconda3-2020.11-Windows-x86_64.exe</p>
 <h1 id="安装-Anaconda"><a href="#安装-Anaconda" class="headerlink" title="安装 Anaconda"></a>安装 Anaconda</h1><p>双击 Anaconda3-2020.11-Windows-x86_64.exe 会出现安装界面，点击 Next：<br><img src="https://img-blog.csdnimg.cn/20210217163952667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装1"><br>点击 I Agree ：<br><img src="https://img-blog.csdnimg.cn/20210217164133751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装2"><br>这里选择第二个， All Users ：<br><img src="https://img-blog.csdnimg.cn/20210217164243462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装3"><br>然后点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装4"><br>点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装5"><br>把两个勾选框都选上：<br><img src="https://img-blog.csdnimg.cn/20210217164338687.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装5"><br>然后点击 Install ：<br><img src="https://img-blog.csdnimg.cn/20210217164338696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装6"><br>程序开始安装：<br><img src="https://img-blog.csdnimg.cn/20210217164338700.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装7"><br>安装完成，点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装8"><br>点击 Next ：<br><img src="https://img-blog.csdnimg.cn/20210217164338712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装9"><br>点击 Finish，安装结束：<br><img src="https://img-blog.csdnimg.cn/20210217164338740.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装10"><br>在 Windows 的形如菜单可以看到，最近添加里有两个新项目，一个是 Anaconda Powershell Prompt ，还有一个是 Jupyter Notebook 。<br><img src="https://img-blog.csdnimg.cn/20210217164338753.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装11"></p>
 <p>我们打开 Anaconda Powershell Prompt ，输入：<br><code>&gt;&gt;&gt; Python -V</code><br>如果显示：<br><code>Python 3.8.5</code> ，那么就表示安装成功。<br><img src="https://img-blog.csdnimg.cn/2021021716593014.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vdXNlMjAxOA==,size_16,color_FFFFFF,t_70" alt="Anaconda 安装12"></p>
 
@@ -284,7 +285,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean-iter-dataframe-row/" rel="prev" title="【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行">
+    <a href="/python-bean-iter-dataframe-row" rel="prev" title="【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行">
       <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行
     </a></div>
       <div class="post-nav-item">

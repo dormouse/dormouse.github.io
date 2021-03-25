@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":false,"scrollpercent":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="打开文件打开文件示例: 1234567with open(&quot;&#x2F;tmp&#x2F;foo.txt&quot;) as file:    data &#x3D; file.read()with open(&#39;examples&#x2F;favorite-people.txt&#39;, encoding&#x3D;&#39;utf-8&#39;) as a_file:    for a_line in a_file:        line_number +&#x3D; 1">
+  <meta name="description" content="打开文件打开文件示例: 1234567with open(&quot;&#x2F;tmp&#x2F;foo.txt&quot;) as file:    data &#x3D; file.read()with open(&amp;#x27;examples&#x2F;favorite-people.txt&amp;#x27;, encoding&#x3D;&amp;#x27;utf-8&amp;#x27;) as a_file:    for a_line in a_file:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Note 100 - File">
-<meta property="og:url" content="https://dormouse.github.io/zh_cn/2017/python-note-100-file/index.html">
+<meta property="og:url" content="https://dormouse.github.io/python-note-100-file">
 <meta property="og:site_name" content="Dormouse Hole">
-<meta property="og:description" content="打开文件打开文件示例: 1234567with open(&quot;&#x2F;tmp&#x2F;foo.txt&quot;) as file:    data &#x3D; file.read()with open(&#39;examples&#x2F;favorite-people.txt&#39;, encoding&#x3D;&#39;utf-8&#39;) as a_file:    for a_line in a_file:        line_number +&#x3D; 1">
+<meta property="og:description" content="打开文件打开文件示例: 1234567with open(&quot;&#x2F;tmp&#x2F;foo.txt&quot;) as file:    data &#x3D; file.read()with open(&amp;#x27;examples&#x2F;favorite-people.txt&amp;#x27;, encoding&#x3D;&amp;#x27;utf-8&amp;#x27;) as a_file:    for a_line in a_file:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-12T16:00:00.000Z">
 <meta property="article:modified_time" content="2019-03-17T01:56:07.915Z">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="file">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/">
+<link rel="canonical" href="https://dormouse.github.io/python-note-100-file">
 
 
 <script id="page-configurations">
@@ -187,7 +187,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-100-file">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -241,11 +241,16 @@
 
       
         <h1 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h1><p>打开文件示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"/tmp/foo.txt"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'examples/favorite-people.txt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> a_file:</span><br><span class="line">    <span class="keyword">for</span> a_line <span class="keyword">in</span> a_file:</span><br><span class="line">        line_number += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'&#123;:&gt;4&#125; &#123;&#125;'</span>.format(line_number, a_line.rstrip()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;examples/favorite-people.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> a_file:</span><br><span class="line">    <span class="keyword">for</span> a_line <span class="keyword">in</span> a_file:</span><br><span class="line">        line_number += <span class="number">1</span></span><br><span class="line">        print(<span class="string">&#x27;&#123;:&gt;4&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(line_number, a_line.rstrip()))</span><br></pre></td></tr></table></figure>
+
 <p>使用字符串的 format() 方法可以打印出行号和行自身。格式说明符 {:&gt;4} 的意思是:使用最多四个空格使之右对齐，然后打印此参数。</p>
-<p>变量 a_line 是包括回车符等在内的完整的一行。字符串方法rstrip()可以去掉尾随的空白符，包括回车符。<br><a id="more"></a></p>
+<p>变量 a_line 是包括回车符等在内的完整的一行。字符串方法rstrip()可以去掉尾随的空白符，包括回车符。</p>
+<span id="more"></span>
+
+
 <h1 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h1><p>写入文件示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(csvfile, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(linelist)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(csvfile, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.writelines(linelist)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
 <h1 id="关于-open-模式"><a href="#关于-open-模式" class="headerlink" title="关于 open 模式"></a>关于 open 模式</h1><p>open 的模式如下表：</p>
 <table>
 <thead>
@@ -254,8 +259,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>r</td>
 <td>以读方式打开</td>
 </tr>
@@ -303,65 +307,66 @@
 <td>ab+</td>
 <td>以二进制读写模式打开 (参见 a+ )</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h1 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h1><ul>
-<li>fp.read([size]) #size为读取的长度，以byte为单位</li>
-<li>fp.readline([size])<br>#读一行，如果定义了size，有可能返回的只是一行的一部分</li>
-<li>fp.readlines([size])<br>#把文件每一行作为一个list的一个成员，并返回这个list。其实它的内部是通过循环调用readline()来实现的。如果提供size参数，size是表示读取内容的总长，也就是说可能只读到文件的一部分。</li>
-<li>fp.write(str) #把str写到文件中，write()并不会在str后加上一个换行符</li>
-<li>fp.writelines(seq)<br>#把seq的内容全部写到文件中(多行一次性写入)。这个函数也只是忠实地写入，不会在每行后面加上任何东西。</li>
-<li>fp.close()<br>#关闭文件。python会在一个文件不用后自动关闭文件，不过这一功能没有保证，最好还是养成自己关闭的习惯。<br>如果一个文件在关闭后还对其进行操作会产生ValueError</li>
-<li>fp.flush() #把缓冲区的内容写入硬盘</li>
-<li>fp.fileno() #返回一个长整型的”文件标签“</li>
-<li>fp.isatty() #文件是否是一个终端设备文件（unix系统中的）</li>
-<li>fp.tell() #返回文件操作标记的当前位置，以文件的开头为原点</li>
-<li>fp.next()<br>#返回下一行，并将文件操作标记位移到下一行。把一个file用于for … in<br>file这样的语句时，就是调用next()函数来实现遍历的。</li>
-<li>fp.seek(offset[,whence])<br>#将文件打操作标记移到offset的位置。这个offset一般是相对于文件的开头来计算的，一般为正数。但如果提供了whence参数就不一定了，whence可以为0表示从头开始计算，1表示以当前位置为原点计算。2表示以文件末尾为原点进行计算。需要注意，如果文件以a或a+的模式打开，每次进行写操作时，文件操作标记会自动返回到文件末尾。</li>
-<li>fp.truncate([size])<br>#把文件裁成规定的大小，默认的是裁到当前文件操作标记的位置。如果size比文件的大小还要大，依据系统的不同可能是不改变文件，也可能是用0把文件补到相应的大小，也可能是以一些随机的内容加上去。</li>
+<li> fp.read([size]) #size为读取的长度，以byte为单位</li>
+<li>fp.readline([size])<br> #读一行，如果定义了size，有可能返回的只是一行的一部分</li>
+<li>fp.readlines([size])<br> #把文件每一行作为一个list的一个成员，并返回这个list。其实它的内部是通过循环调用readline()来实现的。如果提供size参数，size是表示读取内容的总长，也就是说可能只读到文件的一部分。</li>
+<li> fp.write(str) #把str写到文件中，write()并不会在str后加上一个换行符</li>
+<li>fp.writelines(seq)<br> #把seq的内容全部写到文件中(多行一次性写入)。这个函数也只是忠实地写入，不会在每行后面加上任何东西。</li>
+<li>fp.close()<br> #关闭文件。python会在一个文件不用后自动关闭文件，不过这一功能没有保证，最好还是养成自己关闭的习惯。<br> 如果一个文件在关闭后还对其进行操作会产生ValueError</li>
+<li> fp.flush() #把缓冲区的内容写入硬盘</li>
+<li> fp.fileno() #返回一个长整型的”文件标签“</li>
+<li> fp.isatty() #文件是否是一个终端设备文件（unix系统中的）</li>
+<li> fp.tell() #返回文件操作标记的当前位置，以文件的开头为原点</li>
+<li>fp.next()<br> #返回下一行，并将文件操作标记位移到下一行。把一个file用于for … in<br> file这样的语句时，就是调用next()函数来实现遍历的。</li>
+<li>fp.seek(offset[,whence])<br> #将文件打操作标记移到offset的位置。这个offset一般是相对于文件的开头来计算的，一般为正数。但如果提供了whence参数就不一定了，whence可以为0表示从头开始计算，1表示以当前位置为原点计算。2表示以文件末尾为原点进行计算。需要注意，如果文件以a或a+的模式打开，每次进行写操作时，文件操作标记会自动返回到文件末尾。</li>
+<li>fp.truncate([size])<br> #把文件裁成规定的大小，默认的是裁到当前文件操作标记的位置。如果size比文件的大小还要大，依据系统的不同可能是不改变文件，也可能是用0把文件补到相应的大小，也可能是以一些随机的内容加上去。</li>
 </ul>
 <h1 id="shutil-操作"><a href="#shutil-操作" class="headerlink" title="shutil 操作"></a>shutil 操作</h1><p>复制文件：</p>
 <ul>
-<li>shutil.copyfile(“oldfile”,”newfile”) oldfile 和 newfile<br>都只能是文件。</li>
-<li>shutil.copy(“oldfile”,”newfile”) oldfile 只能是文件夹， newfile<br>可以是文件， 也可以是目标目录</li>
+<li>shutil.copyfile(“oldfile”,”newfile”) oldfile 和 newfile<br> 都只能是文件。</li>
+<li>shutil.copy(“oldfile”,”newfile”) oldfile 只能是文件夹， newfile<br> 可以是文件， 也可以是目标目录</li>
 </ul>
 <p>复制文件夹：</p>
 <ul>
-<li>shutil.copytree(“olddir”,”newdir”)<br>olddir和newdir都只能是目录，且newdir必须不存在</li>
+<li>shutil.copytree(“olddir”,”newdir”)<br> olddir和newdir都只能是目录，且newdir必须不存在</li>
 </ul>
 <p>移动文件（目录）：</p>
 <ul>
-<li>shutil.move(“oldpos”,”newpos”)</li>
+<li> shutil.move(“oldpos”,”newpos”)</li>
 </ul>
 <p>删除目录：</p>
 <ul>
-<li>shutil.rmtree(“dir”) 空目录、有内容的目录都可以删</li>
+<li> shutil.rmtree(“dir”) 空目录、有内容的目录都可以删</li>
 </ul>
 <h1 id="os-和-os-path-模块"><a href="#os-和-os-path-模块" class="headerlink" title="os 和 os.path 模块"></a>os 和 os.path 模块</h1><ul>
-<li>os.mkdir(“file”)：创建目录</li>
-<li>os.rmdir(“dir”)：只能删除空目录</li>
-<li>os.listdir(dirname)：列出dirname下的目录和文件</li>
-<li>os.getcwd()：获得当前工作目录</li>
-<li>os.curdir：返回当前目录（’.’)</li>
-<li>os.chdir(dirname)：改变工作目录到dirname</li>
-<li>os.remove(“file”)：删除文件</li>
-<li>os.rename(“oldname”,”newname”)：重命名文件（目录），文件或目录都是使用这条命令</li>
-<li>os.path.isdir(name)：判断name是不是一个目录，name不是目录就返回false</li>
-<li>os.path.isfile(name)：判断name是不是一个文件，不存在name也返回false</li>
-<li>os.path.exists(name)：判断是否存在文件或目录name</li>
-<li>os.path.getsize(name)：获得文件大小，如果name是目录返回0L</li>
-<li>os.path.abspath(name)：获得绝对路径</li>
-<li>os.path.normpath(path)：规范path字符串形式</li>
-<li>os.path.split(name)：分割文件名与目录（事实上，如果你完全使用目录，它也<br>会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）</li>
-<li>os.path.splitext()：分离文件名与扩展名，返回一个tuple：(“aaa”,”.txt”)</li>
-<li>os.path.join(path,name)：连接目录与文件名或目录</li>
-<li>os.path.basename(path)：返回文件名</li>
-<li>os.path.dirname(path)：返回文件路径</li>
+<li> os.mkdir(“file”)：创建目录</li>
+<li> os.rmdir(“dir”)：只能删除空目录</li>
+<li> os.listdir(dirname)：列出dirname下的目录和文件</li>
+<li> os.getcwd()：获得当前工作目录</li>
+<li> os.curdir：返回当前目录（’.’)</li>
+<li> os.chdir(dirname)：改变工作目录到dirname</li>
+<li> os.remove(“file”)：删除文件</li>
+<li> os.rename(“oldname”,”newname”)：重命名文件（目录），文件或目录都是使用这条命令</li>
+<li> os.path.isdir(name)：判断name是不是一个目录，name不是目录就返回false</li>
+<li> os.path.isfile(name)：判断name是不是一个文件，不存在name也返回false</li>
+<li> os.path.exists(name)：判断是否存在文件或目录name</li>
+<li> os.path.getsize(name)：获得文件大小，如果name是目录返回0L</li>
+<li> os.path.abspath(name)：获得绝对路径</li>
+<li> os.path.normpath(path)：规范path字符串形式</li>
+<li>os.path.split(name)：分割文件名与目录（事实上，如果你完全使用目录，它也<br> 会将最后一个目录作为文件名而分离，同时它不会判断文件或目录是否存在）</li>
+<li> os.path.splitext()：分离文件名与扩展名，返回一个tuple：(“aaa”,”.txt”)</li>
+<li> os.path.join(path,name)：连接目录与文件名或目录</li>
+<li> os.path.basename(path)：返回文件名</li>
+<li> os.path.dirname(path)：返回文件路径</li>
 </ul>
 <h1 id="获得同一后缀名的文件"><a href="#获得同一后缀名的文件" class="headerlink" title="获得同一后缀名的文件"></a>获得同一后缀名的文件</h1><p>示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> glob.glob(<span class="string">"*.xls"</span>):</span><br><span class="line">     <span class="keyword">print</span> filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> glob.glob(<span class="string">&quot;*.xls&quot;</span>):</span><br><span class="line">     <span class="built_in">print</span> filename</span><br></pre></td></tr></table></figure>
+
 <h1 id="获得文件的权限"><a href="#获得文件的权限" class="headerlink" title="获得文件的权限"></a>获得文件的权限</h1><p>示例:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import <span class="built_in">stat</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import os</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(stat.S_IMODE(os.lstat(<span class="string">"soft"</span>).st_mode))</span></span><br><span class="line">'0755'</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">"soft"</span>)[stat.ST_MODE])</span></span><br><span class="line">'040755'</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">"soft"</span>).st_mode &amp; 0777)</span></span><br><span class="line">'0755'</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import <span class="built_in">stat</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;import os</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(stat.S_IMODE(os.lstat(<span class="string">&quot;soft&quot;</span>).st_mode))</span></span><br><span class="line">&#x27;0755&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">&quot;soft&quot;</span>)[stat.ST_MODE])</span></span><br><span class="line">&#x27;040755&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;oct(os.stat(<span class="string">&quot;soft&quot;</span>).st_mode &amp; 0777)</span></span><br><span class="line">&#x27;0755&#x27;</span><br></pre></td></tr></table></figure>
+
 <p>常用常数:</p>
 <pre><code>S_IRWXU 00700   mask for file owner permissions
 S_IRUSR 00400   owner has read permission
@@ -376,6 +381,7 @@ S_IROTH 00004   others have read permission
 S_IWOTH 00002   others have write permission
 S_IXOTH 00001   others have execute permission
 </code></pre>
+
     </div>
 
     
@@ -395,8 +401,8 @@ S_IXOTH 00001   others have execute permission
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/zh_cn/2017/python-note-300-dict/" rel="prev" title="Python Note 300 - Dict">
-      <i class="fa fa-chevron-left"></i> Python Note 300 - Dict
+    <a href="/python-note-200-list" rel="prev" title="Python Note 200 - List">
+      <i class="fa fa-chevron-left"></i> Python Note 200 - List
     </a></div>
       <div class="post-nav-item">
     <a href="/zh_cn/2018/write-blog-with-hexo/" rel="next" title="使用 Hexo 写博客">

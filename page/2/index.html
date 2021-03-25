@@ -251,7 +251,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-100-file">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -265,7 +265,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-100-file/" class="post-title-link" itemprop="url">Python Note 100 - File</a>
+            <a href="/python-note-100-file" class="post-title-link" itemprop="url">Python Note 100 - File</a>
         </h2>
 
         <div class="post-meta">
@@ -306,12 +306,13 @@
 
       
           <h1 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h1><p>打开文件示例:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"/tmp/foo.txt"</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'examples/favorite-people.txt'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> a_file:</span><br><span class="line">    <span class="keyword">for</span> a_line <span class="keyword">in</span> a_file:</span><br><span class="line">        line_number += <span class="number">1</span></span><br><span class="line">        print(<span class="string">'&#123;:&gt;4&#125; &#123;&#125;'</span>.format(line_number, a_line.rstrip()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = file.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;examples/favorite-people.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> a_file:</span><br><span class="line">    <span class="keyword">for</span> a_line <span class="keyword">in</span> a_file:</span><br><span class="line">        line_number += <span class="number">1</span></span><br><span class="line">        print(<span class="string">&#x27;&#123;:&gt;4&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(line_number, a_line.rstrip()))</span><br></pre></td></tr></table></figure>
+
 <p>使用字符串的 format() 方法可以打印出行号和行自身。格式说明符 {:&gt;4} 的意思是:使用最多四个空格使之右对齐，然后打印此参数。</p>
-<p>变量 a_line 是包括回车符等在内的完整的一行。字符串方法rstrip()可以去掉尾随的空白符，包括回车符。<br>
+<p>变量 a_line 是包括回车符等在内的完整的一行。字符串方法rstrip()可以去掉尾随的空白符，包括回车符。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-100-file/#more" rel="contents">
+              <a class="btn" href="/python-note-100-file#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -335,7 +336,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-300-dict/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-200-list">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -349,93 +350,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-300-dict/" class="post-title-link" itemprop="url">Python Note 300 - Dict</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h1><p>Python 3.5 或者以后：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = &#123;**x, **y&#125;</span><br></pre></td></tr></table></figure>
-<p>Python 2 、或 3.4 以前：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x.copy()</span><br><span class="line">z.update(y)</span><br></pre></td></tr></table></figure>
-<h1 id="字典推导"><a href="#字典推导" class="headerlink" title="字典推导"></a>字典推导</h1><p>和列表推导类似，字典同样可以推导:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">"Packers"</span>, <span class="string">"49ers"</span>, <span class="string">"Ravens"</span>, <span class="string">"Patriots"</span>]</span><br><span class="line"><span class="keyword">print</span> &#123;key: value <span class="keyword">for</span> value, key <span class="keyword">in</span> enumerate(teams)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">'49ers'</span>: <span class="number">1</span>, <span class="string">'Ravens'</span>: <span class="number">2</span>, <span class="string">'Patriots'</span>: <span class="number">3</span>, <span class="string">'Packers'</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-300-dict/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-200-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/zh_cn/2017/python-note-200-list/" class="post-title-link" itemprop="url">Python Note 200 - List</a>
+            <a href="/python-note-200-list" class="post-title-link" itemprop="url">Python Note 200 - List</a>
         </h2>
 
         <div class="post-meta">
@@ -477,11 +392,100 @@
       
           <h1 id="列表推导（过滤）"><a href="#列表推导（过滤）" class="headerlink" title="列表推导（过滤）"></a>列表推导（过滤）</h1><p>以过滤偶数为例，一般方法:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = []</span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even.append(number)</span><br></pre></td></tr></table></figure>
+
 <p>推导方式过滤:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-200-list/#more" rel="contents">
+              <a class="btn" href="/python-note-200-list#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-300-dict">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/python-note-300-dict" class="post-title-link" itemprop="url">Python Note 300 - Dict</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h1><p>Python 3.5 或者以后：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = &#123;**x, **y&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Python 2 、或 3.4 以前：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x.copy()</span><br><span class="line">z.update(y)</span><br></pre></td></tr></table></figure>
+
+<h1 id="字典推导"><a href="#字典推导" class="headerlink" title="字典推导"></a>字典推导</h1><p>和列表推导类似，字典同样可以推导:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> &#123;key: value <span class="keyword">for</span> value, key <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">&#x27;49ers&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Ravens&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Patriots&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;Packers&#x27;</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/python-note-300-dict#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -560,8 +564,8 @@
 
       
           <ul>
-<li>capitalize() 首字符大写</li>
-<li>center(width) 返回一个原字符串居中,并使用空格填充至长度 width 的新字串
+<li>  capitalize() 首字符大写</li>
+<li>  center(width) 返回一个原字符串居中,并使用空格填充至长度 width 的新字串
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/zh_cn/2017/python-note/400str/#more" rel="contents">
@@ -588,7 +592,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-500-datetime/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-500-datetime">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -602,7 +606,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-500-datetime/" class="post-title-link" itemprop="url">Python note 500 - datetime</a>
+            <a href="/python-note-500-datetime" class="post-title-link" itemprop="url">Python note 500 - datetime</a>
         </h2>
 
         <div class="post-meta">
@@ -643,10 +647,10 @@
 
       
           <p>Python 标准库中的 datetime 模块提供了各种对日期和时间的处理方法。</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: now = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: now</span><br><span class="line">Out[<span class="number">3</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">时间转换为字符串</span><br><span class="line">In [<span class="number">4</span>]: now.strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">'2015-06-01 10:26:38'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: now.replace(hour=<span class="number">0</span>,minute=<span class="number">0</span>,second=<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">5</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: now - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">31</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">字符串转换为时间</span><br><span class="line">In [<span class="number">7</span>]: str = <span class="string">'Fri, 19 May 2017 10:50:42'</span></span><br><span class="line">In [<span class="number">8</span>]: datetime.datetime.strptime(str, <span class="string">'%a, %d %b %Y %H:%M:%S'</span>)</span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2017</span>, <span class="number">5</span>, <span class="number">19</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">struct time to timestamp</span><br><span class="line">time.mktime()</span><br><span class="line"></span><br><span class="line">time zone</span><br><span class="line">time.timezone</span><br><span class="line"></span><br><span class="line">time to loacl datetime</span><br><span class="line">datetime.fromtimestamp(time.mktime(struct_time)-time.timezone)</span><br></pre></td></tr></table></figure>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: now = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: now</span><br><span class="line">Out[<span class="number">3</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">时间转换为字符串</span><br><span class="line">In [<span class="number">4</span>]: now.strftime(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">&#x27;2015-06-01 10:26:38&#x27;</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: now.replace(hour=<span class="number">0</span>,minute=<span class="number">0</span>,second=<span class="number">0</span>)</span><br><span class="line">Out[<span class="number">5</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: now - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">31</span>, <span class="number">10</span>, <span class="number">26</span>, <span class="number">38</span>, <span class="number">836099</span>)</span><br><span class="line"></span><br><span class="line">字符串转换为时间</span><br><span class="line">In [<span class="number">7</span>]: <span class="built_in">str</span> = <span class="string">&#x27;Fri, 19 May 2017 10:50:42&#x27;</span></span><br><span class="line">In [<span class="number">8</span>]: datetime.datetime.strptime(<span class="built_in">str</span>, <span class="string">&#x27;%a, %d %b %Y %H:%M:%S&#x27;</span>)</span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2017</span>, <span class="number">5</span>, <span class="number">19</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">struct time to timestamp</span><br><span class="line">time.mktime()</span><br><span class="line"></span><br><span class="line">time zone</span><br><span class="line">time.timezone</span><br><span class="line"></span><br><span class="line">time to loacl datetime</span><br><span class="line">datetime.fromtimestamp(time.mktime(struct_time)-time.timezone)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-500-datetime/#more" rel="contents">
+              <a class="btn" href="/python-note-500-datetime#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -670,7 +674,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-600-functional-programming/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-600-functional-programming">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -684,7 +688,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-600-functional-programming/" class="post-title-link" itemprop="url">Python Note 600 - Functional Programming</a>
+            <a href="/python-note-600-functional-programming" class="post-title-link" itemprop="url">Python Note 600 - Functional Programming</a>
         </h2>
 
         <div class="post-meta">
@@ -728,7 +732,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: f = <span class="keyword">lambda</span> x: x * <span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: f(<span class="number">8</span>)</span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">16</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: f</span><br><span class="line">Out[<span class="number">3</span>]: &lt;function __main__.&lt;<span class="keyword">lambda</span>&gt;(x)&gt;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-600-functional-programming/#more" rel="contents">
+              <a class="btn" href="/python-note-600-functional-programming#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -752,7 +756,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-700-sorting/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-700-sorting">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -766,7 +770,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-700-sorting/" class="post-title-link" itemprop="url">Python Note 700 - Sorting</a>
+            <a href="/python-note-700-sorting" class="post-title-link" itemprop="url">Python Note 700 - Sorting</a>
         </h2>
 
         <div class="post-meta">
@@ -808,10 +812,10 @@
       
           <p>本文基于 Python 2.7.6 [GCC 4.8.2] on linux2 。</p>
 <p>Python 中排序常用的有 sort 和 sorted 。 首先来看看定义:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>help(list.sort)</span><br><span class="line">Help on method_descriptor:</span><br><span class="line"></span><br><span class="line">sort(...)</span><br><span class="line">    L.sort(cmp=<span class="keyword">None</span>, key=<span class="keyword">None</span>, reverse=<span class="keyword">False</span>) -- stable sort *IN PLACE*;</span><br><span class="line">    cmp(x, y) -&gt; -1, 0, 1</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>help(sorted)</span><br><span class="line">Help on built-<span class="keyword">in</span> function sorted <span class="keyword">in</span> module __builtin__:</span><br><span class="line"></span><br><span class="line">sorted(...)</span><br><span class="line">    sorted(iterable, cmp=None, key=None, reverse=False) --&gt; new sorted list</span><br><span class="line"></span><br><span class="line">sorted(iterable, cmp=None, key=None, reverse=False) --&gt; new sorted list</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">help</span>(<span class="built_in">list</span>.sort)</span><br><span class="line">Help on method_descriptor:</span><br><span class="line"></span><br><span class="line">sort(...)</span><br><span class="line">    L.sort(cmp=<span class="literal">None</span>, key=<span class="literal">None</span>, reverse=<span class="literal">False</span>) -- stable sort *IN PLACE*;</span><br><span class="line">    cmp(x, y) -&gt; -1, 0, 1</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">help</span>(<span class="built_in">sorted</span>)</span><br><span class="line">Help on built-<span class="keyword">in</span> function <span class="built_in">sorted</span> <span class="keyword">in</span> module __builtin__:</span><br><span class="line"></span><br><span class="line"><span class="built_in">sorted</span>(...)</span><br><span class="line">    sorted(iterable, cmp=None, key=None, reverse=False) --&gt; new sorted list</span><br><span class="line"></span><br><span class="line">sorted(iterable, cmp=None, key=None, reverse=False) --&gt; new sorted list</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-700-sorting/#more" rel="contents">
+              <a class="btn" href="/python-note-700-sorting#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -835,7 +839,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-800-logger/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-800-logger">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -849,7 +853,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-800-logger/" class="post-title-link" itemprop="url">Python note 800 - logger</a>
+            <a href="/python-note-800-logger" class="post-title-link" itemprop="url">Python note 800 - logger</a>
         </h2>
 
         <div class="post-meta">
@@ -890,10 +894,10 @@
 
       
           <p>常用代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">self.logger = logging.getLogger(__name__)</span><br><span class="line">self.logger.setLevel(logging.DEBUG)</span><br><span class="line">ch = logging.StreamHandler()</span><br><span class="line">ch.setLevel(logging.DEBUG)</span><br><span class="line">formatter = logging.Formatter(</span><br><span class="line">    <span class="string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span>)</span><br><span class="line">ch.setFormatter(formatter)</span><br><span class="line">self.logger.addHandler(ch)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">self.logger = logging.getLogger(__name__)</span><br><span class="line">self.logger.setLevel(logging.DEBUG)</span><br><span class="line">ch = logging.StreamHandler()</span><br><span class="line">ch.setLevel(logging.DEBUG)</span><br><span class="line">formatter = logging.Formatter(</span><br><span class="line">    <span class="string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;</span>)</span><br><span class="line">ch.setFormatter(formatter)</span><br><span class="line">self.logger.addHandler(ch)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-800-logger/#more" rel="contents">
+              <a class="btn" href="/python-note-800-logger#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -917,7 +921,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-900-other/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-900-other">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -931,7 +935,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/zh_cn/2017/python-note-900-other/" class="post-title-link" itemprop="url">Python note 900 - other</a>
+            <a href="/python-note-900-other" class="post-title-link" itemprop="url">Python note 900 - other</a>
         </h2>
 
         <div class="post-meta">
@@ -971,10 +975,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="ConfigParser-Usage"><a href="#ConfigParser-Usage" class="headerlink" title="ConfigParser Usage"></a>ConfigParser Usage</h1><p>Example:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conf_file = <span class="string">'conf.ini'</span></span><br><span class="line">conf_parser = ConfigParser.ConfigParser()</span><br><span class="line">conf_parser.read(conf_file)</span><br><span class="line">conf = &#123;key: value <span class="keyword">for</span> key, value <span class="keyword">in</span> conf_parser.items(section_name)&#125;</span><br></pre></td></tr></table></figure></p>
+          <h1 id="ConfigParser-Usage"><a href="#ConfigParser-Usage" class="headerlink" title="ConfigParser Usage"></a>ConfigParser Usage</h1><p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conf_file = <span class="string">&#x27;conf.ini&#x27;</span></span><br><span class="line">conf_parser = ConfigParser.ConfigParser()</span><br><span class="line">conf_parser.read(conf_file)</span><br><span class="line">conf = &#123;key: value <span class="keyword">for</span> key, value <span class="keyword">in</span> conf_parser.items(section_name)&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-900-other/#more" rel="contents">
+              <a class="btn" href="/python-note-900-other#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

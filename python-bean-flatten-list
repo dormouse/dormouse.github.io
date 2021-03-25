@@ -20,23 +20,21 @@
     var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":false,"scrollpercent":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Tips 合并一个EXCEL 文件中的所有SHEET  1df&#x3D;pd.concat(pd.read_excel(workbook_url,sheet_name&#x3D;None),ignore_index&#x3D;True)  合并一个目录下所有 EXCEL 文件中的所有SHEET  123df &#x3D; pd.concat(    [pd.concat(pd.read_excel(wb, sheet_name&#x3D;Non">
+  <meta name="description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 假设有一个列表：source_list &#x3D; [[1, 2, 3], [4, 5, 6], [7], [8, 9]] ，要求把这个列表拍扁，变成：[1, 2, 3, 4, 5,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pandas Notes">
-<meta property="og:url" content="https://dormouse.github.io/zh_cn/2021/pandas-tips/index.html">
+<meta property="og:title" content="【Python茴香豆系列】之 拍扁列表">
+<meta property="og:url" content="https://dormouse.github.io/python-bean-flatten-list">
 <meta property="og:site_name" content="Dormouse Hole">
-<meta property="og:description" content="Tips 合并一个EXCEL 文件中的所有SHEET  1df&#x3D;pd.concat(pd.read_excel(workbook_url,sheet_name&#x3D;None),ignore_index&#x3D;True)  合并一个目录下所有 EXCEL 文件中的所有SHEET  123df &#x3D; pd.concat(    [pd.concat(pd.read_excel(wb, sheet_name&#x3D;Non">
+<meta property="og:description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 假设有一个列表：source_list &#x3D; [[1, 2, 3], [4, 5, 6], [7], [8, 9]] ，要求把这个列表拍扁，变成：[1, 2, 3, 4, 5,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-03-01T06:59:50.378Z">
+<meta property="article:modified_time" content="2021-02-28T13:52:54.002Z">
 <meta property="article:author" content="Dormouse Young">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="pandas">
-<meta property="article:tag" content="dataframe">
-<meta property="article:tag" content="excel">
+<meta property="article:tag" content="list">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://dormouse.github.io/zh_cn/2021/pandas-tips/">
+<link rel="canonical" href="https://dormouse.github.io/python-bean-flatten-list">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>Pandas Notes | Dormouse Hole</title>
+  <title>【Python茴香豆系列】之 拍扁列表 | Dormouse Hole</title>
   
 
 
@@ -188,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2021/pandas-tips/">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-flatten-list">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pandas Notes
+          【Python茴香豆系列】之 拍扁列表
         </h1>
 
         <div class="post-meta">
@@ -218,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-03-01 14:59:50" itemprop="dateModified" datetime="2021-03-01T14:59:50+08:00">2021-03-01</time>
+                <time title="Modified: 2021-02-28 21:52:54" itemprop="dateModified" datetime="2021-02-28T21:52:54+08:00">2021-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                  <a href="/categories/Python-%E8%8C%B4%E9%A6%99%E8%B1%86/" itemprop="url" rel="index"><span itemprop="name">Python 茴香豆</span></a>
                 </span>
             </span>
 
@@ -241,81 +239,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
-<li>合并一个EXCEL 文件中的所有SHEET</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.concat(pd.read_excel(workbook_url,sheet_name=<span class="keyword">None</span>),ignore_index=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>合并一个目录下所有 EXCEL 文件中的所有SHEET</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.concat(</span><br><span class="line">    [pd.concat(pd.read_excel(wb, sheet_name=<span class="keyword">None</span>), ignore_index=<span class="keyword">True</span>) <span class="keyword">for</span> wb <span class="keyword">in</span> wbs],</span><br><span class="line">    ignore_index=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>看列属性</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li>分类计数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gp = df[df[<span class="string">'时间'</span>]&gt;<span class="string">'2021-01-18'</span>].groupby(<span class="string">'目的地'</span>)</span><br><span class="line">gp[<span class="string">'姓名'</span>].count()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>数据透视</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pd.pivot_table(</span><br><span class="line">    df0118,</span><br><span class="line">    index=[<span class="string">'区'</span>],</span><br><span class="line">    values=[<span class="string">'姓名'</span>],</span><br><span class="line">    columns=[<span class="string">'分类'</span>],</span><br><span class="line">    aggfunc=[len],</span><br><span class="line">    fill_value=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按规定行和列输出</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(</span><br><span class="line">    np.arange(<span class="number">12</span>).reshape((<span class="number">4</span>,<span class="number">3</span>)),</span><br><span class="line">    columns=[<span class="string">'c'</span>,<span class="string">'a'</span>,<span class="string">'b'</span>],index=[<span class="string">'D'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'A'</span>])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>根据条件新建列并赋值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'some_col'</span>] = df[<span class="string">'one_col'</span>].apply(<span class="keyword">lambda</span> x: x <span class="keyword">if</span> len(x) == <span class="number">18</span> <span class="keyword">else</span> <span class="keyword">None</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改列名<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.rename(columns=&#123;<span class="string">'a'</span>:<span class="string">'A'</span>,<span class="string">'b'</span>:<span class="string">'B'</span>&#125;,inplace=<span class="keyword">True</span>)</span><br><span class="line">df.rename(str.lower, axis=<span class="string">'columns'</span>)</span><br><span class="line">df.columns = [<span class="string">'A'</span>, <span class="string">'B'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="日期时间"><a href="#日期时间" class="headerlink" title="日期时间"></a>日期时间</h1><ul>
-<li>从日期属性中提取年月日</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'year'</span>] = df[<span class="string">'date'</span>].dt.year</span><br><span class="line">df[<span class="string">'month'</span>] = df[<span class="string">'date'</span>].dt.month</span><br><span class="line">df[<span class="string">'day'</span>] = df[<span class="string">'date'</span>].dt.day</span><br></pre></td></tr></table></figure>
-<ul>
-<li>只保留日期，不要时间，即把日期置为0点</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'日期'</span>] = pd.to_datetime(df[<span class="string">'开始日期'</span>].dt.date)</span><br><span class="line"><span class="comment"># OR</span></span><br><span class="line">df[<span class="string">'日期'</span>] = df[<span class="string">'开始日期'</span>].dt.normalize()</span><br></pre></td></tr></table></figure>
-<ul>
-<li>按照指定格式打印时间，注意类型会由 <code>datetime64[ns]</code> 变为 <code>object</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'dd'</span>].dt.strftime(<span class="string">"%Y-%m-%d"</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>给日期加一天</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'two_date'</span>] = df[<span class="string">'one_date'</span>] + datetime.timedelta(days=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>dt.date 和 dt.normalize()，他们都返回一个日期的 日期部分，即只包含年月日。但不同的是date返回的Series是object类型的，normalize()返回的Series是datetime64类型的。</li>
-<li>dt.year、dt.month、dt.day、dt.hour、dt.minute、dt.second、dt.week (dt.weekofyear和dt.week一样)分别返回日期的年、月、日、小时、分、秒及一年中的第几周</li>
-<li>dt.weekday（dt.dayofweek一样）返回一周中的星期几，0代表星期一，6代表星期天，dt.weekday_name返回星期几的英文。</li>
-<li>dt.dayofyear 返回一年的第几天，dt.quarter得到每个日期分别是第几个季度。</li>
-<li>dt.is_month_start和dt.is_month_end 判断日期是否是每月的第一天或最后一天，可以将month换成year和quarter相应的判断日期是否是每年或季度的第一天或最后一天.</li>
-<li>dt.is_leap_year 判断是否是闰年</li>
-<li>dt.month_name() 返回月份的英文名称.</li>
-</ol>
-<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><ul>
-<li>str.replace():替换字符串</li>
-</ul>
-<p>Series.str.replace(pat, repl, n=- 1, case=None, flags=0, regex=None)</p>
-<p>Replace each occurrence of pattern/regex in the Series/Index.</p>
-<p>Equivalent to str.replace() or re.sub(), depending on the regex value.</p>
-<h2 id="去空白"><a href="#去空白" class="headerlink" title="去空白"></a>去空白</h2><ul>
-<li>str.strip():删除左右两侧的空白（开始/结束）</li>
-<li>str.lstrip():删除左侧空白</li>
-<li>str.rstrip():删除右侧空白</li>
-</ul>
-<h2 id="大小写変换"><a href="#大小写変换" class="headerlink" title="大小写変换"></a>大小写変换</h2><ul>
-<li>str.lower():转换为小写</li>
-<li>str.upper():转换为大写</li>
-<li>str.capitalize():将第一个字母转换为大写，将其他字母转换为小写</li>
-<li>str.title():将单词的首字母转换为大写，其余转换为小写<br>将描述每个示例。</li>
-</ul>
+        <p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
+<p>假设有一个列表：<code>source_list = [[1, 2, 3], [4, 5, 6], [7], [8, 9]]</code> ，要求把这个列表拍扁，变成：<code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code> 。</p>
+<p>这里我们先做一点准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line">source_list = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>], [<span class="number">8</span>, <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆一：-for-for"><a href="#茴香豆一：-for-for" class="headerlink" title="茴香豆一： for for"></a>茴香豆一： for for</h1><p>如果第一次面对这种问题，可能首先想到的就是 for ，基本的思路如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list = []</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> sublist <span class="keyword">in</span> source_list:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>   <span class="keyword">for</span> item <span class="keyword">in</span> sublist:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>       flatten_list.append(item)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+
+<p>嗯，工作完成。</p>
+<p>当然，如果你熟悉列表的推导的话，上面的一堆可以浓缩成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[item <span class="keyword">for</span> sublist <span class="keyword">in</span> source_list <span class="keyword">for</span> item <span class="keyword">in</span> sublist]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h1 id="茴香豆二：-sum"><a href="#茴香豆二：-sum" class="headerlink" title="茴香豆二： sum"></a>茴香豆二： sum</h1><p>python 有一个内置函数 sum ，这个函数本来是用来给我们做算术的，恰巧列表也是可以求和的，因此下面这句也能用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sum</span>(source_list, [])</span><br></pre></td></tr></table></figure>
+
+<p>numpy 也有类型的功能的 sum ，效果相同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.<span class="built_in">sum</span>(numpy.array(source_list, dtype=<span class="built_in">object</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆三：-numpy"><a href="#茴香豆三：-numpy" class="headerlink" title="茴香豆三： numpy"></a>茴香豆三： numpy</h1><p>numpy 还有专业拼接数组的工具，可以用来大炮打蚊子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(numpy.concatenate(source_list))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆四：-numpy"><a href="#茴香豆四：-numpy" class="headerlink" title="茴香豆四： numpy"></a>茴香豆四： numpy</h1><p>多个东东变成一个东东，这不能不让我怀念起 reduce 的好：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functools.reduce(<span class="keyword">lambda</span> x,y: x+y, source_list)</span><br><span class="line">functools.reduce(operator.concat, source_list)</span><br><span class="line">functools.reduce(operator.iconcat, source_list, [])</span><br></pre></td></tr></table></figure>
+
+<p>殊途同归，以上三条语句实现了同样的效果。</p>
+<h1 id="茴香豆五：-chain"><a href="#茴香豆五：-chain" class="headerlink" title="茴香豆五： chain"></a>茴香豆五： chain</h1><p>遇到列表的问题，高手们一般会亮出 chain ，以区别于一般俗手：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(itertools.chain(*source_list))</span><br><span class="line"><span class="built_in">list</span>(itertools.chain.from_iterable(source_list))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆六：-flatten"><a href="#茴香豆六：-flatten" class="headerlink" title="茴香豆六： flatten"></a>茴香豆六： flatten</h1><p>最后，请大家不要小看这个问题，但凡玩列表的，估计总有一天会遇到这个问题，不然前辈高人不会造这么多轮子的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas.core.common <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib.cbook <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> setuptools.namespaces <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -326,9 +280,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/pandas/" rel="tag"># pandas</a>
-              <a href="/tags/dataframe/" rel="tag"># dataframe</a>
-              <a href="/tags/excel/" rel="tag"># excel</a>
+              <a href="/tags/list/" rel="tag"># list</a>
           </div>
 
         
@@ -337,12 +289,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean-flatten-list/" rel="prev" title="【Python茴香豆系列】之 拍扁列表">
-      <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 拍扁列表
+    <a href="/python-update-dict" rel="prev" title="【Python茴香豆系列】之 字典合并">
+      <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 字典合并
     </a></div>
       <div class="post-nav-item">
-    <a href="/zh_cn/2021/python-bean-count-dataframe-row/" rel="next" title="【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数">
-      【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数 <i class="fa fa-chevron-right"></i>
+    <a href="/pandas-tips" rel="next" title="Pandas Notes">
+      Pandas Notes <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -402,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">1.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-number">2.</span> <span class="nav-text">日期时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%BB%E7%A9%BA%E7%99%BD"><span class="nav-number">3.2.</span> <span class="nav-text">去空白</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E5%A4%89%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">大小写変换</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%B8%80%EF%BC%9A-for-for"><span class="nav-number">1.</span> <span class="nav-text">茴香豆一： for for</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%BA%8C%EF%BC%9A-sum"><span class="nav-number">2.</span> <span class="nav-text">茴香豆二： sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%B8%89%EF%BC%9A-numpy"><span class="nav-number">3.</span> <span class="nav-text">茴香豆三： numpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E5%9B%9B%EF%BC%9A-numpy"><span class="nav-number">4.</span> <span class="nav-text">茴香豆四： numpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%BA%94%EF%BC%9A-chain"><span class="nav-number">5.</span> <span class="nav-text">茴香豆五： chain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E5%85%AD%EF%BC%9A-flatten"><span class="nav-number">6.</span> <span class="nav-text">茴香豆六： flatten</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
