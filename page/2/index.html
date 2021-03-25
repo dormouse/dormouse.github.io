@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.7.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,16 +17,16 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},"copycode":{"enable":false,"show_result":false},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"dormouse.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":false,"scrollpercent":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="Dormouse Hole">
 <meta property="og:url" content="https://dormouse.github.io/page/2/index.html">
 <meta property="og:site_name" content="Dormouse Hole">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
+<meta property="article:author" content="Dormouse Young">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dormouse Hole">
 
 <link rel="canonical" href="https://dormouse.github.io/page/2/">
 
@@ -115,14 +115,14 @@
     <a href="/" rel="section"><i class="home fa-fw"></i>Home</a>
 
   </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
-
-  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -179,6 +179,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2018/write-blog-with-hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/zh_cn/2018/write-blog-with-hexo/" class="post-title-link" itemprop="url">使用 Hexo 写博客</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-06-29 14:32:24" itemprop="dateCreated datePublished" datetime="2018-06-29T14:32:24+08:00">2018-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-28 22:34:47" itemprop="dateModified" datetime="2021-02-28T22:34:47+08:00">2021-02-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原来一直使用 Sphinx 写东西， 2018 年想开始使用一个真正的博客系统来写一些博客，于是选用了 Hexo 。我主要使用 Python 进行开发，那么为什么不选用 Pelican 之类的以 Python 为基础的博客系统呢？因为不够好看，不够方便。下面是我在安装及使用 Hexo 过程中的一些笔记。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/zh_cn/2018/write-blog-with-hexo/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
     <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-100-file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,6 +277,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -256,83 +335,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-200-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/zh_cn/2017/python-note-200-list/" class="post-title-link" itemprop="url">Python Note 200 - List</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="列表推导（过滤）"><a href="#列表推导（过滤）" class="headerlink" title="列表推导（过滤）"></a>列表推导（过滤）</h1><p>以过滤偶数为例，一般方法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = []</span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even.append(number)</span><br></pre></td></tr></table></figure>
-<p>推导方式过滤:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/zh_cn/2017/python-note-200-list/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
     <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-300-dict/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -359,6 +361,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -412,6 +421,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note-200-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/zh_cn/2017/python-note-200-list/" class="post-title-link" itemprop="url">Python Note 200 - List</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="列表推导（过滤）"><a href="#列表推导（过滤）" class="headerlink" title="列表推导（过滤）"></a>列表推导（过滤）</h1><p>以过滤偶数为例，一般方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = []</span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even.append(number)</span><br></pre></td></tr></table></figure>
+<p>推导方式过滤:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/zh_cn/2017/python-note-200-list/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
     <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2017/python-note/400str/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,6 +531,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -514,6 +614,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -589,6 +696,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-04-22 19:55:29" itemprop="dateModified" datetime="2020-04-22T19:55:29+08:00">2020-04-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -664,6 +778,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -740,6 +861,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -815,6 +943,13 @@
 
               <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -859,84 +994,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh_cn">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/zh_cn/2013/rst-sphinx-pdf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/zh_cn/2013/rst-sphinx-pdf/" class="post-title-link" itemprop="url">使用 Sphinx 生成 PDF 文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2013-01-27 21:42:37" itemprop="dateCreated datePublished" datetime="2013-01-27T21:42:37+08:00">2013-01-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/software/" itemprop="url" rel="index"><span itemprop="name">software</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown 格式的源文件。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/zh_cn/2013/rst-sphinx-pdf/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1002,7 +1063,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1047,7 +1108,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
 
         
@@ -1067,9 +1128,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -1103,7 +1172,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
