@@ -31,8 +31,8 @@
 <meta property="article:modified_time" content="2021-03-28T12:45:32.525Z">
 <meta property="article:author" content="Dormouse Young">
 <meta property="article:tag" content="python">
-<meta property="article:tag" content="note">
 <meta property="article:tag" content="dict">
+<meta property="article:tag" content="note">
 <meta name="twitter:card" content="summary">
 
 
@@ -278,21 +278,21 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/note/" rel="tag"># note</a>
               <a href="/tags/dict/" rel="tag"># dict</a>
+              <a href="/tags/note/" rel="tag"># note</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/python-note-100-file" rel="prev" title="Python Note 100 - File">
-                  <i class="fa fa-chevron-left"></i> Python Note 100 - File
+                <a href="/2017/02/13/python-note/400str/" rel="prev" title="Python Note 400 - String">
+                  <i class="fa fa-chevron-left"></i> Python Note 400 - String
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/06/29/write-blog-with-hexo/" rel="next" title="使用 Hexo 写博客">
-                  使用 Hexo 写博客 <i class="fa fa-chevron-right"></i>
+                <a href="/python-note-200-list" rel="next" title="Python Note 200 - List">
+                  Python Note 200 - List <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

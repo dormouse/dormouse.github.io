@@ -273,7 +273,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/python-bean-modify-dataframe-column-name" rel="prev" title="【Python茴香豆系列】之 PANDAS 修改 DataFrame 列名">
+                <a href="/2021/01/29/python-bean/python-bean-modify-dataframe-column-name/" rel="prev" title="【Python茴香豆系列】之 PANDAS 修改 DataFrame 列名">
                   <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 PANDAS 修改 DataFrame 列名
                 </a>
             </div>
