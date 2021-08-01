@@ -243,7 +243,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-pandas-change-column-type">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/03/26/python-bean/python-bean-pandas-change-column-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -256,7 +256,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-bean-pandas-change-column-type" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 变更列的类型</a>
+          <a href="/2021/03/26/python-bean/python-bean-pandas-change-column-type/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 变更列的类型</a>
         </h2>
 
         <div class="post-meta-container">
@@ -274,7 +274,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-28 20:45:32" itemprop="dateModified" datetime="2021-03-28T20:45:32+08:00">2021-03-28</time>
+        <time title="Modified: 2021-08-01 21:10:17" itemprop="dateModified" datetime="2021-08-01T21:10:17+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -311,7 +311,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>df.apply(pd.to_numeric).dtypes</span><br><span class="line">a      int64</span><br><span class="line">b    float64</span><br><span class="line">c      int64</span><br><span class="line">dtype: <span class="built_in">object</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-bean-pandas-change-column-type#more" rel="contents">
+              <a class="btn" href="/2021/03/26/python-bean/python-bean-pandas-change-column-type/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -342,7 +342,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-select-dataframe-row">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/03/12/python-bean/python-bean-select-dataframe-row/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -355,7 +355,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-bean-select-dataframe-row" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 如何根据列的值来选取 DataFrame 的行</a>
+          <a href="/2021/03/12/python-bean/python-bean-select-dataframe-row/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 如何根据列的值来选取 DataFrame 的行</a>
         </h2>
 
         <div class="post-meta-container">
@@ -373,7 +373,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-25 22:47:44" itemprop="dateModified" datetime="2021-03-25T22:47:44+08:00">2021-03-25</time>
+        <time title="Modified: 2021-08-01 21:10:24" itemprop="dateModified" datetime="2021-08-01T21:10:24+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -406,7 +406,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mask = [<span class="literal">False</span>] * <span class="number">244</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mask[<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mask[<span class="number">3</span>] = <span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[mask]</span><br><span class="line">   total_bill   tip   sex smoker  day    time  size</span><br><span class="line"><span class="number">1</span>       <span class="number">10.34</span>  <span class="number">1.66</span>  Male     No  Sun  Dinner     <span class="number">3</span></span><br><span class="line"><span class="number">3</span>       <span class="number">23.68</span>  <span class="number">3.31</span>  Male     No  Sun  Dinner     <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 选取性别为男性的行</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[df[<span class="string">&#x27;sex&#x27;</span>] == <span class="string">&#x27;Male&#x27;</span>].head()</span><br><span class="line">   total_bill   tip   sex smoker  day    time  size</span><br><span class="line"><span class="number">1</span>       <span class="number">10.34</span>  <span class="number">1.66</span>  Male     No  Sun  Dinner     <span class="number">3</span></span><br><span class="line"><span class="number">2</span>       <span class="number">21.01</span>  <span class="number">3.50</span>  Male     No  Sun  Dinner     <span class="number">3</span></span><br><span class="line"><span class="number">3</span>       <span class="number">23.68</span>  <span class="number">3.31</span>  Male     No  Sun  Dinner     <span class="number">2</span></span><br><span class="line"><span class="number">5</span>       <span class="number">25.29</span>  <span class="number">4.71</span>  Male     No  Sun  Dinner     <span class="number">4</span></span><br><span class="line"><span class="number">6</span>        <span class="number">8.77</span>  <span class="number">2.00</span>  Male     No  Sun  Dinner     <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 选取小费超过 2 ，或者性别为女性的行</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>df[(df[<span class="string">&#x27;tip&#x27;</span>]&gt;<span class="number">2</span>) | (df[<span class="string">&#x27;sex&#x27;</span>]==<span class="string">&#x27;Female&#x27;</span>)].head()</span><br><span class="line">   total_bill   tip     sex smoker  day    time  size</span><br><span class="line"><span class="number">0</span>       <span class="number">16.99</span>  <span class="number">1.01</span>  Female     No  Sun  Dinner     <span class="number">2</span></span><br><span class="line"><span class="number">2</span>       <span class="number">21.01</span>  <span class="number">3.50</span>    Male     No  Sun  Dinner     <span class="number">3</span></span><br><span class="line"><span class="number">3</span>       <span class="number">23.68</span>  <span class="number">3.31</span>    Male     No  Sun  Dinner     <span class="number">2</span></span><br><span class="line"><span class="number">4</span>       <span class="number">24.59</span>  <span class="number">3.61</span>  Female     No  Sun  Dinner     <span class="number">4</span></span><br><span class="line"><span class="number">5</span>       <span class="number">25.29</span>  <span class="number">4.71</span>    Male     No  Sun  Dinner     <span class="number">4</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-bean-select-dataframe-row#more" rel="contents">
+              <a class="btn" href="/2021/03/12/python-bean/python-bean-select-dataframe-row/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -437,7 +437,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-install">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/02/17/python-bean/anaconda%E5%AE%89%E8%A3%85/%E6%96%B0%E6%89%8B%E5%AE%89%E8%A3%85%20Python%20%E7%8E%AF%E5%A2%83%EF%BC%88%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%20Anaconda%20%E5%AE%89%E8%A3%85%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -450,7 +450,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-install" class="post-title-link" itemprop="url">新手安装 Python 环境（详细图解 Anaconda 安装）</a>
+          <a href="/2021/02/17/python-bean/anaconda%E5%AE%89%E8%A3%85/%E6%96%B0%E6%89%8B%E5%AE%89%E8%A3%85%20Python%20%E7%8E%AF%E5%A2%83%EF%BC%88%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%20Anaconda%20%E5%AE%89%E8%A3%85%EF%BC%89/" class="post-title-link" itemprop="url">新手安装 Python 环境（详细图解 Anaconda 安装）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -468,7 +468,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-01 15:02:56" itemprop="dateModified" datetime="2021-03-01T15:02:56+08:00">2021-03-01</time>
+        <time title="Modified: 2021-08-01 21:10:50" itemprop="dateModified" datetime="2021-08-01T21:10:50+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -500,7 +500,7 @@
 </ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-install#more" rel="contents">
+              <a class="btn" href="/2021/02/17/python-bean/anaconda%E5%AE%89%E8%A3%85/%E6%96%B0%E6%89%8B%E5%AE%89%E8%A3%85%20Python%20%E7%8E%AF%E5%A2%83%EF%BC%88%E8%AF%A6%E7%BB%86%E5%9B%BE%E8%A7%A3%20Anaconda%20%E5%AE%89%E8%A3%85%EF%BC%89/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -531,7 +531,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-iter-dataframe-row">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/02/05/python-bean/python-bean-iter-dataframe-row/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -544,7 +544,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-bean-iter-dataframe-row" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行</a>
+          <a href="/2021/02/05/python-bean/python-bean-iter-dataframe-row/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 如何遍历 DataFrame 的所有行</a>
         </h2>
 
         <div class="post-meta-container">
@@ -562,7 +562,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-28 21:46:36" itemprop="dateModified" datetime="2021-02-28T21:46:36+08:00">2021-02-28</time>
+        <time title="Modified: 2021-08-01 21:09:58" itemprop="dateModified" datetime="2021-08-01T21:09:58+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -597,7 +597,7 @@
 <p>这个函数简单明了，似乎不错，但是有一个致命的弱点：一般情况下会比较慢，在行数较多的情况下，那个什么，会怀疑人生。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-bean-iter-dataframe-row#more" rel="contents">
+              <a class="btn" href="/2021/02/05/python-bean/python-bean-iter-dataframe-row/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -628,7 +628,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-count-dataframe-row">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/02/03/python-bean/python-bean-count-dataframe-row/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -641,7 +641,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-bean-count-dataframe-row" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数</a>
+          <a href="/2021/02/03/python-bean/python-bean-count-dataframe-row/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 PANDAS 获取 DataFrame 的行数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -659,7 +659,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-28 21:46:46" itemprop="dateModified" datetime="2021-02-28T21:46:46+08:00">2021-02-28</time>
+        <time title="Modified: 2021-08-01 21:09:41" itemprop="dateModified" datetime="2021-08-01T21:09:41+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -697,7 +697,7 @@
 <p>好吧，至此，任务勉强完成了，但是……有一点丑陋。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-bean-count-dataframe-row#more" rel="contents">
+              <a class="btn" href="/2021/02/03/python-bean/python-bean-count-dataframe-row/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -728,7 +728,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/pandas-tips">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/02/01/python-bean/python-bean-flatten-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -741,7 +741,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pandas-tips" class="post-title-link" itemprop="url">Pandas Notes</a>
+          <a href="/2021/02/01/python-bean/python-bean-flatten-list/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 拍扁列表</a>
         </h2>
 
         <div class="post-meta-container">
@@ -759,7 +759,104 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-01 14:59:50" itemprop="dateModified" datetime="2021-03-01T14:59:50+08:00">2021-03-01</time>
+        <time title="Modified: 2021-08-01 21:09:50" itemprop="dateModified" datetime="2021-08-01T21:09:50+08:00">2021-08-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python-%E8%8C%B4%E9%A6%99%E8%B1%86/" itemprop="url" rel="index"><span itemprop="name">Python 茴香豆</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
+<p>假设有一个列表：<code>source_list = [[1, 2, 3], [4, 5, 6], [7], [8, 9]]</code> ，要求把这个列表拍扁，变成：<code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code> 。</p>
+<p>这里我们先做一点准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line">source_list = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>], [<span class="number">8</span>, <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆一：-for-for"><a href="#茴香豆一：-for-for" class="headerlink" title="茴香豆一： for for"></a>茴香豆一： for for</h1><p>如果第一次面对这种问题，可能首先想到的就是 for ，基本的思路如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list = []</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> sublist <span class="keyword">in</span> source_list:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>   <span class="keyword">for</span> item <span class="keyword">in</span> sublist:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>       flatten_list.append(item)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+
+<p>嗯，工作完成。</p>
+<p>当然，如果你熟悉列表的推导的话，上面的一堆可以浓缩成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[item <span class="keyword">for</span> sublist <span class="keyword">in</span> source_list <span class="keyword">for</span> item <span class="keyword">in</span> sublist]</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/01/python-bean/python-bean-flatten-list/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/02/01/pandas-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/01/pandas-tips/" class="post-title-link" itemprop="url">Pandas Notes</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T00:00:00+08:00">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-01 21:14:34" itemprop="dateModified" datetime="2021-08-01T21:14:34+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -797,7 +894,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/pandas-tips#more" rel="contents">
+              <a class="btn" href="/2021/02/01/pandas-tips/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -828,7 +925,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-flatten-list">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2021/01/31/python-bean/python-bean-update-dict/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -841,104 +938,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/python-bean-flatten-list" class="post-title-link" itemprop="url">【Python茴香豆系列】之 拍扁列表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T00:00:00+08:00">2021-02-01</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-28 21:52:54" itemprop="dateModified" datetime="2021-02-28T21:52:54+08:00">2021-02-28</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python-%E8%8C%B4%E9%A6%99%E8%B1%86/" itemprop="url" rel="index"><span itemprop="name">Python 茴香豆</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
-<p>假设有一个列表：<code>source_list = [[1, 2, 3], [4, 5, 6], [7], [8, 9]]</code> ，要求把这个列表拍扁，变成：<code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code> 。</p>
-<p>这里我们先做一点准备工作：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line">source_list = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>], [<span class="number">8</span>, <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
-
-<h1 id="茴香豆一：-for-for"><a href="#茴香豆一：-for-for" class="headerlink" title="茴香豆一： for for"></a>茴香豆一： for for</h1><p>如果第一次面对这种问题，可能首先想到的就是 for ，基本的思路如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list = []</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> sublist <span class="keyword">in</span> source_list:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>   <span class="keyword">for</span> item <span class="keyword">in</span> sublist:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>       flatten_list.append(item)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
-
-<p>嗯，工作完成。</p>
-<p>当然，如果你熟悉列表的推导的话，上面的一堆可以浓缩成：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[item <span class="keyword">for</span> sublist <span class="keyword">in</span> source_list <span class="keyword">for</span> item <span class="keyword">in</span> sublist]</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/python-bean-flatten-list#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-update-dict">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/python-update-dict" class="post-title-link" itemprop="url">【Python茴香豆系列】之 字典合并</a>
+          <a href="/2021/01/31/python-bean/python-bean-update-dict/" class="post-title-link" itemprop="url">【Python茴香豆系列】之 字典合并</a>
         </h2>
 
         <div class="post-meta-container">
@@ -956,7 +956,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-28 21:59:40" itemprop="dateModified" datetime="2021-02-28T21:59:40+08:00">2021-02-28</time>
+        <time title="Modified: 2021-08-01 21:10:41" itemprop="dateModified" datetime="2021-08-01T21:10:41+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -991,7 +991,7 @@
 <p>任务完成！<br>但是，这样的解法显然是不入孔乙己法眼的，于是开始数茴香豆。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/python-update-dict#more" rel="contents">
+              <a class="btn" href="/2021/01/31/python-bean/python-bean-update-dict/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1053,7 +1053,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-01 21:00:53" itemprop="dateModified" datetime="2021-08-01T21:00:53+08:00">2021-08-01</time>
+        <time title="Modified: 2021-08-01 21:09:32" itemprop="dateModified" datetime="2021-08-01T21:09:32+08:00">2021-08-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
