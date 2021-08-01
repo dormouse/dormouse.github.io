@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 假设有一个列表：source_list &#x3D; [[1, 2, 3], [4, 5, 6], [7], [8, 9]] ，要求把这个列表拍扁，变成：[1, 2, 3, 4, 5,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python茴香豆系列】之 拍扁列表">
+<meta property="og:url" content="https://dormouse.github.io/python-bean-flatten-list">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。 假设有一个列表：source_list &#x3D; [[1, 2, 3], [4, 5, 6], [7], [8, 9]] ，要求把这个列表拍扁，变成：[1, 2, 3, 4, 5,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-28T13:52:54.002Z">
+<meta property="article:author" content="Dormouse Young">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="list">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dormouse.github.io/python-bean-flatten-list">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dormouse.github.io/python-bean-flatten-list","path":"/python-bean-flatten-list","title":"【Python茴香豆系列】之 拍扁列表"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【Python茴香豆系列】之 拍扁列表 | Dormouse Hole</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%B8%80%EF%BC%9A-for-for"><span class="nav-number">1.</span> <span class="nav-text">茴香豆一： for for</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%BA%8C%EF%BC%9A-sum"><span class="nav-number">2.</span> <span class="nav-text">茴香豆二： sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%B8%89%EF%BC%9A-numpy"><span class="nav-number">3.</span> <span class="nav-text">茴香豆三： numpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E5%9B%9B%EF%BC%9A-numpy"><span class="nav-number">4.</span> <span class="nav-text">茴香豆四： numpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E4%BA%94%EF%BC%9A-chain"><span class="nav-number">5.</span> <span class="nav-text">茴香豆五： chain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8C%B4%E9%A6%99%E8%B1%86%E5%85%AD%EF%BC%9A-flatten"><span class="nav-number">6.</span> <span class="nav-text">茴香豆六： flatten</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-bean-flatten-list">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Python茴香豆系列】之 拍扁列表
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-01T00:00:00+08:00">2021-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-28 21:52:54" itemprop="dateModified" datetime="2021-02-28T21:52:54+08:00">2021-02-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python-%E8%8C%B4%E9%A6%99%E8%B1%86/" itemprop="url" rel="index"><span itemprop="name">Python 茴香豆</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>用 Python 编程，使用不同的方法来完成同一个目标，有时候是一件很有意思的事情。这让我想起鲁迅笔下的孔乙己。孔乙己对于茴香豆的茴字的四种写法颇有研究。我不敢自比孔乙己，这里搜集一些 Python 的茴香豆，以飨各位码农。</p>
+<p>假设有一个列表：<code>source_list = [[1, 2, 3], [4, 5, 6], [7], [8, 9]]</code> ，要求把这个列表拍扁，变成：<code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code> 。</p>
+<p>这里我们先做一点准备工作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line">source_list = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>], [<span class="number">8</span>, <span class="number">9</span>]]</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆一：-for-for"><a href="#茴香豆一：-for-for" class="headerlink" title="茴香豆一： for for"></a>茴香豆一： for for</h1><p>如果第一次面对这种问题，可能首先想到的就是 for ，基本的思路如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list = []</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> sublist <span class="keyword">in</span> source_list:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>   <span class="keyword">for</span> item <span class="keyword">in</span> sublist:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>       flatten_list.append(item)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>flatten_list</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+
+<p>嗯，工作完成。</p>
+<p>当然，如果你熟悉列表的推导的话，上面的一堆可以浓缩成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[item <span class="keyword">for</span> sublist <span class="keyword">in</span> source_list <span class="keyword">for</span> item <span class="keyword">in</span> sublist]</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h1 id="茴香豆二：-sum"><a href="#茴香豆二：-sum" class="headerlink" title="茴香豆二： sum"></a>茴香豆二： sum</h1><p>python 有一个内置函数 sum ，这个函数本来是用来给我们做算术的，恰巧列表也是可以求和的，因此下面这句也能用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sum</span>(source_list, [])</span><br></pre></td></tr></table></figure>
+
+<p>numpy 也有类型的功能的 sum ，效果相同：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.<span class="built_in">sum</span>(numpy.array(source_list, dtype=<span class="built_in">object</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆三：-numpy"><a href="#茴香豆三：-numpy" class="headerlink" title="茴香豆三： numpy"></a>茴香豆三： numpy</h1><p>numpy 还有专业拼接数组的工具，可以用来大炮打蚊子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(numpy.concatenate(source_list))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆四：-numpy"><a href="#茴香豆四：-numpy" class="headerlink" title="茴香豆四： numpy"></a>茴香豆四： numpy</h1><p>多个东东变成一个东东，这不能不让我怀念起 reduce 的好：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">functools.reduce(<span class="keyword">lambda</span> x,y: x+y, source_list)</span><br><span class="line">functools.reduce(operator.concat, source_list)</span><br><span class="line">functools.reduce(operator.iconcat, source_list, [])</span><br></pre></td></tr></table></figure>
+
+<p>殊途同归，以上三条语句实现了同样的效果。</p>
+<h1 id="茴香豆五：-chain"><a href="#茴香豆五：-chain" class="headerlink" title="茴香豆五： chain"></a>茴香豆五： chain</h1><p>遇到列表的问题，高手们一般会亮出 chain ，以区别于一般俗手：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(itertools.chain(*source_list))</span><br><span class="line"><span class="built_in">list</span>(itertools.chain.from_iterable(source_list))</span><br></pre></td></tr></table></figure>
+
+<h1 id="茴香豆六：-flatten"><a href="#茴香豆六：-flatten" class="headerlink" title="茴香豆六： flatten"></a>茴香豆六： flatten</h1><p>最后，请大家不要小看这个问题，但凡玩列表的，估计总有一天会遇到这个问题，不然前辈高人不会造这么多轮子的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas.core.common <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib.cbook <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> setuptools.namespaces <span class="keyword">import</span> flatten</span><br><span class="line"><span class="built_in">list</span>(flatten(source_list))</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/list/" rel="tag"># list</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/python-update-dict" rel="prev" title="【Python茴香豆系列】之 字典合并">
+                  <i class="fa fa-chevron-left"></i> 【Python茴香豆系列】之 字典合并
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/pandas-tips" rel="next" title="Pandas Notes">
+                  Pandas Notes <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

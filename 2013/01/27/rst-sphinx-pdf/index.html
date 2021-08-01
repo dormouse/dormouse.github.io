@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="简介本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Sphinx 生成 PDF 文件">
+<meta property="og:url" content="https://dormouse.github.io/2013/01/27/rst-sphinx-pdf/index.html">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="简介本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-01-27T13:42:37.000Z">
+<meta property="article:modified_time" content="2019-03-17T01:56:07.917Z">
+<meta property="article:author" content="Dormouse Young">
+<meta property="article:tag" content="sphinx">
+<meta property="article:tag" content="xetex">
+<meta property="article:tag" content="pdf">
+<meta property="article:tag" content="reStructuredText">
+<meta property="article:tag" content="markdown">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dormouse.github.io/2013/01/27/rst-sphinx-pdf/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dormouse.github.io/2013/01/27/rst-sphinx-pdf/","path":"2013/01/27/rst-sphinx-pdf/","title":"使用 Sphinx 生成 PDF 文件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用 Sphinx 生成 PDF 文件 | Dormouse Hole</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">安装编译环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">编写文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90-PDF-%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">生成 PDF 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B-Tips"><span class="nav-number">5.</span> <span class="nav-text">一些 Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A9-Sphinx-%E6%94%AF%E6%8C%81-markdown"><span class="nav-number">5.1.</span> <span class="nav-text">让 Sphinx 支持 markdown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-%E4%B8%8B%E5%AE%89%E8%A3%85-TeX-Live"><span class="nav-number">5.2.</span> <span class="nav-text">Linux 下安装 TeX Live</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%AD%97%E4%BD%93"><span class="nav-number">5.3.</span> <span class="nav-text">如何查看系统中的字体</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2013/01/27/rst-sphinx-pdf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 Sphinx 生成 PDF 文件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2013-01-27 21:42:37" itemprop="dateCreated datePublished" datetime="2013-01-27T21:42:37+08:00">2013-01-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/software/" itemprop="url" rel="index"><span itemprop="name">software</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本文主要说明如何通过使用 Sphinx 把 reStructuredText （或者 markdown ）生成 PDF 文件。 Sphinx 是一个可以把一系列 reStructuredText 格式文档转换为多种不同格式文档的工具。它具有自动解决交叉引用和编制目录等功能。 Sphinx 支持 html 、 LaTeX 、 ePub 等多种输出格式。现在 Sphinx 已支持 Markdown 格式的源文件。</p>
+<span id="more"></span>
+
+<h1 id="安装编译环境"><a href="#安装编译环境" class="headerlink" title="安装编译环境"></a>安装编译环境</h1><p>本文的测试环境为 macOS Sierra 10.12.6, Python 3.6.1 。</p>
+<ul>
+<li>因为 Sphinx 需要 Python 2.7 或者 Python 3.4 以上版本的 Python ，所以首先要检查系统的 Python 是否安装， Python 的版本是否符合要求。如果想要使用 Python3 ，  macOS 下建议使用 brew 安装， Linux 下建议使用 Anaconda 。</li>
+<li>首先我们创建并激活一个 Python3 虚拟环境。打开终端，输入如下命令：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> python3 -m venv rst_pdf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> rst_pdf</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> bin/activate</span></span><br></pre></td></tr></table></figure>
+
+<p>   激活虚拟环境后提示符最前面会出现 <code>(rst_pdf)</code> 字样。</p>
+<ul>
+<li><p>安装 Sphinx-doc ：</p>
+<p>  <code>pip install -U Sphinx</code></p>
+</li>
+<li><p>安装 LaTeX 支持。 macOS 下建议安装 MacTeX ，安装命令为 <code>brew cask install mactex</code> ，或者到   <a target="_blank" rel="noopener" href="https://www.tug.org/mactex/mactex-download.html">https://www.tug.org/mactex/mactex-download.html</a> 下载 MacTeX.pkg 后运行安装。注意这个安装包在大小约有 3.14 G 。Linux 下建议安装  <a target="_blank" rel="noopener" href="https://tug.org/texlive/">Tex Live</a>。</p>
+</li>
+</ul>
+<h1 id="编写文档"><a href="#编写文档" class="headerlink" title="编写文档"></a>编写文档</h1><p>首先使用 <code>sphinx-quickstart</code> 命令创建一个 Sphinx 项目。这个命令会提出一系列的问题来帮助我们进行项目的设置，每个问题都有默认答案，如果想使用默认答案或者不知道如何回答，那么直接按回车键就可以了。不用担心回答错误，以后可以通过修改配置文件来变更相关设置。以下就是问题示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the Sphinx 1.6.4 quickstart utility.</span><br><span class="line"></span><br><span class="line">Please enter values for the following settings (just press Enter to</span><br><span class="line">accept a default value, if one is given in brackets).</span><br><span class="line"></span><br><span class="line">Enter the root path for documentation.</span><br><span class="line">&gt; Root path for the documentation [.]:</span><br><span class="line"></span><br><span class="line">You have two options for placing the build directory for Sphinx output.</span><br><span class="line">Either, you use a directory &quot;_build&quot; within the root path, or you separate</span><br><span class="line">&quot;source&quot; and &quot;build&quot; directories within the root path.</span><br><span class="line">&gt; Separate source and build directories (y/n) [n]: y</span><br><span class="line">说明：因为我们使用了 Python3 虚拟环境，所以这里我们选择把源文件单独存放在一个目录中。</span><br><span class="line"></span><br><span class="line">Inside the root directory, two more directories will be created; &quot;_templates&quot;</span><br><span class="line">for custom HTML templates and &quot;_static&quot; for custom stylesheets and other static</span><br><span class="line">files. You can enter another prefix (such as &quot;.&quot;) to replace the underscore.</span><br><span class="line">&gt; Name prefix for templates and static dir [_]:</span><br><span class="line"></span><br><span class="line">The project name will occur in several places in the built documentation.</span><br><span class="line">&gt; Project name: rst_pdf</span><br><span class="line">&gt; Author name(s): Dormouse Young</span><br><span class="line"></span><br><span class="line">Sphinx has the notion of a &quot;version&quot; and a &quot;release&quot; for the</span><br><span class="line">software. Each version can have multiple releases. For example, for</span><br><span class="line">Python the version is something like 2.5 or 3.0, while the release is</span><br><span class="line">something like 2.5.1 or 3.0a1.  If you don&#x27;t need this dual structure,</span><br><span class="line">just set both to the same value.</span><br><span class="line">&gt; Project version []:</span><br><span class="line">&gt; Project release []:</span><br><span class="line"></span><br><span class="line">If the documents are to be written in a language other than English,</span><br><span class="line">you can select a language here by its language code. Sphinx will then</span><br><span class="line">translate text that it generates into that language.</span><br><span class="line"></span><br><span class="line">For a list of supported codes, see</span><br><span class="line">http://sphinx-doc.org/config.html#confval-language.</span><br><span class="line">&gt; Project language [en]: zh_CN</span><br><span class="line"></span><br><span class="line">The file name suffix for source files. Commonly, this is either &quot;.txt&quot;</span><br><span class="line">or &quot;.rst&quot;.  Only files with this suffix are considered documents.</span><br><span class="line">&gt; Source file suffix [.rst]:</span><br><span class="line"></span><br><span class="line">One document is special in that it is considered the top node of the</span><br><span class="line">&quot;contents tree&quot;, that is, it is the root of the hierarchical structure</span><br><span class="line">of the documents. Normally, this is &quot;index&quot;, but if your &quot;index&quot;</span><br><span class="line">document is a custom template, you can also set this to another filename.</span><br><span class="line">&gt; Name of your master document (without suffix) [index]:</span><br><span class="line"></span><br><span class="line">Sphinx can also add configuration for epub output:</span><br><span class="line">&gt; Do you want to use the epub builder (y/n) [n]:</span><br><span class="line"></span><br><span class="line">Please indicate if you want to use one of the following Sphinx extensions:</span><br><span class="line">&gt; autodoc: automatically insert docstrings from modules (y/n) [n]:</span><br><span class="line">&gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]:</span><br><span class="line">&gt; intersphinx: link between Sphinx documentation of different projects (y/n) [n]:</span><br><span class="line">&gt; todo: write &quot;todo&quot; entries that can be shown or hidden on build (y/n) [n]:</span><br><span class="line">&gt; coverage: checks for documentation coverage (y/n) [n]:</span><br><span class="line">&gt; imgmath: include math, rendered as PNG or SVG images (y/n) [n]:</span><br><span class="line">&gt; mathjax: include math, rendered in the browser by MathJax (y/n) [n]:</span><br><span class="line">&gt; ifconfig: conditional inclusion of content based on config values (y/n) [n]:</span><br><span class="line">&gt; viewcode: include links to the source code of documented Python objects (y/n) [n]:</span><br><span class="line">&gt; githubpages: create .nojekyll file to publish the document on GitHub pages (y/n) [n]:</span><br><span class="line"></span><br><span class="line">A Makefile and a Windows command file can be generated for you so that you</span><br><span class="line">only have to run e.g. `make html&#x27; instead of invoking sphinx-build</span><br><span class="line">directly.</span><br><span class="line">&gt; Create Makefile? (y/n) [y]: y</span><br><span class="line">&gt; Create Windows command file? (y/n) [y]: n</span><br><span class="line"></span><br><span class="line">Creating file ./source/conf.py.</span><br><span class="line">Creating file ./source/index.rst.</span><br><span class="line">Creating file ./Makefile.</span><br><span class="line"></span><br><span class="line">Finished: An initial directory structure has been created.</span><br><span class="line"></span><br><span class="line">You should now populate your master file ./source/index.rst and create other documentation</span><br><span class="line">source files. Use the Makefile to build the docs, like so:</span><br><span class="line">   make builder</span><br><span class="line">where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>你会发现目录中生成了两个目录和一个文件。<br><code>build</code> 目录用于存放输出的内容，比如我们以后要生成的 PDF 文件。<br><code>source</code> 目录用于存放用户的源文件。<br><code>Makefile</code> 是项目工程文件，方便我们以后生成各种格式的文件。</p>
+<p><code>source</code> 目录下有以下两个目录和两个文件。<br><code>_static</code> 目录用于存放用户自定义样式表或者其他静态文件。<br><code>_templates</code> 目录用于存放用户自定义的模版。<br><code>conf.py</code> 是项目配置文件，以后可以通过修改其中的内容来配置我们的项目。<br><code>index.rst</code> 是项目的索引文件，每个 sphinx-doc 项目都至少有一个索引文件。</p>
+<p>为了能够正确的生成中文 PDF 文件，我们需要修改 <code>conf.py</code> 的 <code>Options for LaTeX output</code> 一节中的 <code>latex_elements</code> 变量，修改为以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">latex_elements = &#123;</span><br><span class="line">    &#x27;papersize&#x27;: &#x27;a4paper&#x27;,</span><br><span class="line">    # Additional stuff for the LaTeX preamble.</span><br><span class="line">    &#x27;preamble&#x27;: &#x27;&#x27;&#x27;</span><br><span class="line">\usepackage&#123;xeCJK&#125;</span><br><span class="line">\usepackage&#123;indentfirst&#125;</span><br><span class="line">\setlength&#123;\parindent&#125;&#123;2em&#125;</span><br><span class="line">\setCJKmainfont[BoldFont=STFangsong, ItalicFont=STKaiti]&#123;STSong&#125;</span><br><span class="line">\setCJKsansfont[BoldFont=STHeiti]&#123;STXihei&#125;</span><br><span class="line">\setCJKmonofont&#123;STFangsong&#125;</span><br><span class="line">&#x27;&#x27;&#x27;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在可以在 <code>source</code> 目录下添加我们自己的 reStructuredText 文件。例如本文的源文件就是 <code>rst-sphinx-pdf.rst</code> 文件。写完后要修改 <code>index.rst</code> 文件，把新添加的 <code>rst-sphinx-pdf.rst</code> 文件加入目录树。例如本文的<code>index.rst</code> 内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Welcome to rst_pdf&#x27;s documentation!</span><br><span class="line">===================================</span><br><span class="line"></span><br><span class="line">.. toctree::</span><br><span class="line">   :maxdepth: 2</span><br><span class="line">   :caption: Contents:</span><br><span class="line"></span><br><span class="line">   rst_pdf</span><br></pre></td></tr></table></figure>
+
+<p>这里扩展名可以省略。</p>
+<h1 id="生成-PDF-文件"><a href="#生成-PDF-文件" class="headerlink" title="生成 PDF 文件"></a>生成 PDF 文件</h1><p>在项目根目录下使用 <code>make latex</code> 命令生成 tex 文件，最后在 <code>build/latex/</code> 目录下运行 <strong>两遍</strong> <code>xelatex rst_pdf.tex</code> 命令即可生成 PDF 文件。</p>
+<h1 id="一些-Tips"><a href="#一些-Tips" class="headerlink" title="一些 Tips"></a>一些 Tips</h1><h2 id="让-Sphinx-支持-markdown"><a href="#让-Sphinx-支持-markdown" class="headerlink" title="让 Sphinx 支持 markdown"></a>让 Sphinx 支持 markdown</h2><p>Sphinx 是可以支持 markdown 的。要让 Sphinx 支持 markdown ，需要按如下方法操作：</p>
+<ul>
+<li>安装 recommonmark ：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install recommonmark</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 Sphinx 配置文件中的 <code>source_parsers</code> 变量中添加 Markdown 解析器：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source_parsers = &#123;</span><br><span class="line">   &#x27;.md&#x27;: &#x27;recommonmark.parser.CommonMarkParser&#x27;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>.md</code> 表示 Markdown 文件的扩展名，你可以替换为其他的扩展名。</p>
+<ul>
+<li>把 Markdown 文件的扩展名添加到配置文件的 <code>source_suffix</code> 变量中：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source_suffix = [&#x27;.rst&#x27;, &#x27;.md&#x27;]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>CommonMark 支持添加自定义 Markdown 语法，详见<a target="_blank" rel="noopener" href="http://recommonmark.readthedocs.io/en/latest/auto_structify.html">recommonmark 文档</a>。</li>
+</ul>
+<h2 id="Linux-下安装-TeX-Live"><a href="#Linux-下安装-TeX-Live" class="headerlink" title="Linux 下安装 TeX Live"></a>Linux 下安装 TeX Live</h2><ul>
+<li>方法一</li>
+</ul>
+<p>使用 <code>apt-get install texlive-full</code> 命令安装。</p>
+<ul>
+<li>方法二</li>
+</ul>
+<p>去 tex 的 <a target="_blank" rel="noopener" href="http://www.tug.org/texlive/acquire-netinstall.html">老家</a> 下载<a target="_blank" rel="noopener" href="http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz">install-tl-unx.tar.gz</a> 。解压缩后，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./install-tl --gui=wizard</span><br></pre></td></tr></table></figure>
+
+<p>如果没有安装 wget ，则运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wget</span><br></pre></td></tr></table></figure>
+
+<p>安装输出大致如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">输入 “In” 开始安装，一共有2599个项目......</span><br><span class="line">Actions:</span><br><span class="line">&lt;I&gt; start installation to hard disk</span><br><span class="line">&lt;H&gt; help</span><br><span class="line">&lt;Q&gt; quit</span><br><span class="line"></span><br><span class="line">Enter command: i</span><br><span class="line">Installing to: /usr/local/texlive/2012</span><br><span class="line">Installing [0001/2599, time/total: ??:??/??:??]: 12many [376k]</span><br><span class="line">Installing [0002/2599, time/total: 00:09/10:05:07]: 2up [66k]</span><br><span class="line">Installing [0003/2599, time/total: 00:10/09:32:46]: Asana-Math [458k]</span><br><span class="line">Installing [0004/2599, time/total: 00:12/05:36:55]: ESIEEcv [137k]</span><br><span class="line">Installing [0005/2599, time/total: 00:15/06:05:39]: FAQ-en [5765k]</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">See /usr/local/texlive/2012/index.html</span><br><span class="line">for links to documentation.  The TeX Live web site</span><br><span class="line">contains updates and corrections: http://tug.org/texlive.</span><br><span class="line"></span><br><span class="line">TeX Live is a joint project of the TeX user groups around the world;</span><br><span class="line">please consider supporting it by joining the group best for you. The</span><br><span class="line">list of user groups is on the web at http://tug.org/usergroups.html.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Add /usr/local/texlive/2012/texmf/doc/man to MANPATH, if not dynamically determined.</span><br><span class="line">Add /usr/local/texlive/2012/texmf/doc/info to INFOPATH.</span><br><span class="line"></span><br><span class="line">Most importantly, add /usr/local/texlive/2012/bin/x86_64-linux</span><br><span class="line">to your PATH for current and future sessions.</span><br></pre></td></tr></table></figure>
+
+<p>设置路径，把以下内容放在 .bash_profile 中，然后运行 . ~/.bash_profile(ubuntu 下是 ~/.bashrc)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.<span class="built_in">local</span>/bin:<span class="variable">$HOME</span>/bin</span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/texlive/2012/bin/x86_64-linux:<span class="variable">$PATH</span>; <span class="built_in">export</span> PATH</span><br><span class="line">MANPATH=/usr/<span class="built_in">local</span>/texlive/2012/texmf/doc/man:<span class="variable">$MANPATH</span>; <span class="built_in">export</span> MANPATH</span><br><span class="line">INFOPATH=/usr/<span class="built_in">local</span>/texlive/2012/texmf/doc/info:<span class="variable">$INFOPATH</span>; <span class="built_in">export</span> INFOPATH</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何查看系统中的字体"><a href="#如何查看系统中的字体" class="headerlink" title="如何查看系统中的字体"></a>如何查看系统中的字体</h2><p>在 macOS 中可以使用“字体册”应用来查看字体名称。在 Linux 中可以用 <code>fc-list</code> 命令来获得字体名称。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/sphinx/" rel="tag"># sphinx</a>
+              <a href="/tags/xetex/" rel="tag"># xetex</a>
+              <a href="/tags/pdf/" rel="tag"># pdf</a>
+              <a href="/tags/reStructuredText/" rel="tag"># reStructuredText</a>
+              <a href="/tags/markdown/" rel="tag"># markdown</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/python-note-900-other" rel="next" title="Python note 900 - other">
+                  Python note 900 - other <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

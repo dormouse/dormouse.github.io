@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ConfigParser UsageExample: 1234conf_file &#x3D; &amp;#x27;conf.ini&amp;#x27;conf_parser &#x3D; ConfigParser.ConfigParser()conf_parser.read(conf_file)conf &#x3D; &amp;#123;key: value for key, value in conf_parser.items(section_n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python note 900 - other">
+<meta property="og:url" content="https://dormouse.github.io/python-note-900-other">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="ConfigParser UsageExample: 1234conf_file &#x3D; &amp;#x27;conf.ini&amp;#x27;conf_parser &#x3D; ConfigParser.ConfigParser()conf_parser.read(conf_file)conf &#x3D; &amp;#123;key: value for key, value in conf_parser.items(section_n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-02-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-03-17T01:56:07.917Z">
+<meta property="article:author" content="Dormouse Young">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="note">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dormouse.github.io/python-note-900-other">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dormouse.github.io/python-note-900-other","path":"/python-note-900-other","title":"Python note 900 - other"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python note 900 - other | Dormouse Hole</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ConfigParser-Usage"><span class="nav-number">1.</span> <span class="nav-text">ConfigParser Usage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deal-with-INI-file"><span class="nav-number">2.</span> <span class="nav-text">Deal with INI file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-INI-%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">如何生成 INI 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AF%BB%E5%8F%96-INI-%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">如何读取 INI 文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">支持的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96-Excel-%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">6.</span> <span class="nav-text">读取 Excel 文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%8F%98%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">交换变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-number">8.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%8A%80%E5%B7%A7"><span class="nav-number">9.</span> <span class="nav-text">数字技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83"><span class="nav-number">10.</span> <span class="nav-text">数值比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E6%95%B0%E6%97%B6%E4%BD%BF%E7%94%A8-Counter-%E5%AF%B9%E8%B1%A1"><span class="nav-number">11.</span> <span class="nav-text">计数时使用 Counter 对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">12.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%B7%A5%E5%85%B7"><span class="nav-number">13.</span> <span class="nav-text">迭代工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#False-True"><span class="nav-number">14.</span> <span class="nav-text">False &#x3D;&#x3D; True</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E6%AC%A1%E6%80%A7%E7%9A%84%E3%80%81%E5%BF%AB%E9%80%9F%E7%9A%84%E5%B0%8F%E5%9E%8Bweb%E6%9C%8D%E5%8A%A1"><span class="nav-number">15.</span> <span class="nav-text">创建一次性的、快速的小型web服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%82%E4%BA%AE%E7%9A%84%E6%89%93%E5%8D%B0%E5%87%BAJSON"><span class="nav-number">16.</span> <span class="nav-text">漂亮的打印出JSON</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">17.</span> <span class="nav-text">动态生成类的属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E7%B1%BB"><span class="nav-number">18.</span> <span class="nav-text">动态生成类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">18.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-900-other">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python note 900 - other
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="ConfigParser-Usage"><a href="#ConfigParser-Usage" class="headerlink" title="ConfigParser Usage"></a>ConfigParser Usage</h1><p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conf_file = <span class="string">&#x27;conf.ini&#x27;</span></span><br><span class="line">conf_parser = ConfigParser.ConfigParser()</span><br><span class="line">conf_parser.read(conf_file)</span><br><span class="line">conf = &#123;key: value <span class="keyword">for</span> key, value <span class="keyword">in</span> conf_parser.items(section_name)&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+<h1 id="Deal-with-INI-file"><a href="#Deal-with-INI-file" class="headerlink" title="Deal with INI file"></a>Deal with INI file</h1><p>基本的文件示例如下:</p>
+<pre><code>[DEFAULT]
+ServerAliveInterval = 45
+Compression = yes
+CompressionLevel = 9
+ForwardX11 = yes
+
+[bitbucket.org]
+User = hg
+
+[topsecret.server.com]
+Port = 50022
+ForwardX11 = no
+</code></pre>
+<h1 id="如何生成-INI-文件"><a href="#如何生成-INI-文件" class="headerlink" title="如何生成 INI 文件"></a>如何生成 INI 文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> configparser</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config = configparser.ConfigParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;DEFAULT&#x27;</span>] = &#123;<span class="string">&#x27;ServerAliveInterval&#x27;</span>: <span class="string">&#x27;45&#x27;</span>,</span><br><span class="line"><span class="meta">... </span>                     <span class="string">&#x27;Compression&#x27;</span>: <span class="string">&#x27;yes&#x27;</span>,</span><br><span class="line"><span class="meta">... </span>                     <span class="string">&#x27;CompressionLevel&#x27;</span>: <span class="string">&#x27;9&#x27;</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;bitbucket.org&#x27;</span>] = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;bitbucket.org&#x27;</span>][<span class="string">&#x27;User&#x27;</span>] = <span class="string">&#x27;hg&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;topsecret.server.com&#x27;</span>] = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret = config[<span class="string">&#x27;topsecret.server.com&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret[<span class="string">&#x27;Port&#x27;</span>] = <span class="string">&#x27;50022&#x27;</span>     <span class="comment"># mutates the parser</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret[<span class="string">&#x27;ForwardX11&#x27;</span>] = <span class="string">&#x27;no&#x27;</span>  <span class="comment"># same here</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;DEFAULT&#x27;</span>][<span class="string">&#x27;ForwardX11&#x27;</span>] = <span class="string">&#x27;yes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example.ini&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> configfile:</span><br><span class="line"><span class="meta">... </span>  config.write(configfile)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>使用方法和字典基本一致。</p>
+<h1 id="如何读取-INI-文件"><a href="#如何读取-INI-文件" class="headerlink" title="如何读取 INI 文件"></a>如何读取 INI 文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> configparser</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config = configparser.ConfigParser()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config.sections()</span><br><span class="line">[]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config.read(<span class="string">&#x27;example.ini&#x27;</span>)</span><br><span class="line">[<span class="string">&#x27;example.ini&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config.sections()</span><br><span class="line">[<span class="string">&#x27;bitbucket.org&#x27;</span>, <span class="string">&#x27;topsecret.server.com&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;bitbucket.org&#x27;</span> <span class="keyword">in</span> config</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;bytebong.com&#x27;</span> <span class="keyword">in</span> config</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;bitbucket.org&#x27;</span>][<span class="string">&#x27;User&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;hg&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;DEFAULT&#x27;</span>][<span class="string">&#x27;Compression&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;yes&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret = config[<span class="string">&#x27;topsecret.server.com&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret[<span class="string">&#x27;ForwardX11&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;no&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret[<span class="string">&#x27;Port&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;50022&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> key <span class="keyword">in</span> config[<span class="string">&#x27;bitbucket.org&#x27;</span>]: <span class="built_in">print</span>(key)</span><br><span class="line">...</span><br><span class="line">user</span><br><span class="line">compressionlevel</span><br><span class="line">serveraliveinterval</span><br><span class="line">compression</span><br><span class="line">forwardx11</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;bitbucket.org&#x27;</span>][<span class="string">&#x27;ForwardX11&#x27;</span>]</span><br><span class="line"><span class="string">&#x27;yes&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>DEFAULT 一节会自动代入到其他节</p>
+<h1 id="支持的数据类型"><a href="#支持的数据类型" class="headerlink" title="支持的数据类型"></a>支持的数据类型</h1><p>Config parsers<br>不猜测数据类型，都是以文本形式保存的。你要自己转换数据类型:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(topsecret[<span class="string">&#x27;Port&#x27;</span>])</span><br><span class="line"><span class="number">50022</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">float</span>(topsecret[<span class="string">&#x27;CompressionLevel&#x27;</span>])</span><br><span class="line"><span class="number">9.0</span></span><br></pre></td></tr></table></figure>
+
+<p>提供 getboolean() 、 getint() 和 getfloat() 来读取相应的数据类型。<br>getboolean 比较方便，因为 bool(‘False’) 的结果为 True :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>topsecret.getboolean(<span class="string">&#x27;ForwardX11&#x27;</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config[<span class="string">&#x27;bitbucket.org&#x27;</span>].getboolean(<span class="string">&#x27;ForwardX11&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>config.getboolean(<span class="string">&#x27;bitbucket.org&#x27;</span>, <span class="string">&#x27;Compression&#x27;</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>更多内容参见：<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/configparser.html/#module-configparser">https://docs.python.org/3/library/configparser.html\#module-configparser</a></p>
+<h1 id="读取-Excel-文件内容"><a href="#读取-Excel-文件内容" class="headerlink" title="读取 Excel 文件内容"></a>读取 Excel 文件内容</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line">workbook = xlrd.open_workbook(filename) <span class="comment">#打开文件</span></span><br><span class="line">sheetcount = workbook.nsheets <span class="comment">#文件内sheet的数量</span></span><br><span class="line">sheet = workbook.sheet_by_index(i) <span class="comment">#获得某个sheet，第一个sheet索引为0</span></span><br><span class="line">rowcount = sheet.nrows <span class="comment">#最大行数</span></span><br><span class="line">colcount = sheet.ncols <span class="comment">#最大列数</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="交换变量"><a href="#交换变量" class="headerlink" title="交换变量"></a>交换变量</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">6</span></span><br><span class="line">y = <span class="number">5</span></span><br><span class="line">x, y = y, x</span><br><span class="line"><span class="built_in">print</span> x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span></span><br><span class="line"><span class="built_in">print</span> y</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h1><p>下面的最后一种方式在绑定两个不同类型的对象时显得很cool:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">nfc = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>]</span><br><span class="line">afc = [<span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> nfc + afc</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;Packers&#x27;</span>, <span class="string">&#x27;49ers&#x27;</span>, <span class="string">&#x27;Ravens&#x27;</span>, <span class="string">&#x27;Patriots&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span> <span class="built_in">str</span>(<span class="number">1</span>) + <span class="string">&quot; world&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> world</span><br><span class="line"><span class="built_in">print</span> `<span class="number">1</span>` + <span class="string">&quot; world&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> world</span><br><span class="line"><span class="built_in">print</span> <span class="number">1</span>, <span class="string">&quot;world&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> world</span><br><span class="line"><span class="built_in">print</span> nfc, <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;Packers&#x27;</span>, <span class="string">&#x27;49ers&#x27;</span>] <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="数字技巧"><a href="#数字技巧" class="headerlink" title="数字技巧"></a>数字技巧</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#除后向下取整</span></span><br><span class="line"><span class="built_in">print</span> <span class="number">5.0</span>//<span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span></span><br><span class="line"><span class="comment"># 2的5次方</span></span><br><span class="line"><span class="built_in">print</span> <span class="number">2</span>**<span class="number">5</span></span><br><span class="line">&gt;&gt; <span class="number">32</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#注意浮点数的除法</span></span><br><span class="line"><span class="built_in">print</span> <span class="number">.3</span>/<span class="number">.1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.9999999999999996</span></span><br><span class="line"><span class="built_in">print</span> <span class="number">.3</span>//<span class="number">.1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.0</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="数值比较"><a href="#数值比较" class="headerlink" title="数值比较"></a>数值比较</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">2</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">3</span> &gt; x &gt; <span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span> x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">1</span> &lt; x &gt; <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span> x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="计数时使用-Counter-对象"><a href="#计数时使用-Counter-对象" class="headerlink" title="计数时使用 Counter 对象"></a>计数时使用 Counter 对象</h1><p>这听起来显而易见，但经常被人忘记。对于大多数程序员来说，数一个东西是一项 很常见的任务，而且在大多数情况下并不是很有挑战性的事情——这里有几种方法 能更简单的完成这种任务。</p>
+<p>Python的collections类库里有个内置的dict类的子类，是专门来干这种事情的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = Counter(<span class="string">&#x27;hello world&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">Counter(&#123;<span class="string">&#x27;l&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;o&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27; &#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;e&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;d&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;h&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;r&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;w&#x27;</span>: <span class="number">1</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.most_common(<span class="number">2</span>)</span><br><span class="line">[(<span class="string">&#x27;l&#x27;</span>, <span class="number">3</span>), (<span class="string">&#x27;o&#x27;</span>, <span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>除了python内置的数据类型外，在collection模块同样还包括一些特别的用例，在 有些场合Counter非常实用。如果你参加过在这一年的Facebook HackerCup，你甚至 也能找到他的实用之处:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="built_in">print</span> Counter(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Counter(&#123;<span class="string">&#x27;l&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;h&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;e&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;o&#x27;</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="迭代工具"><a href="#迭代工具" class="headerlink" title="迭代工具"></a>迭代工具</h1><p>和collections库一样，还有一个库叫itertools，对某些问题真能高效地解决。 其中一个用例是查找所有组合，他能告诉你在一个组中元素的所有不能的组合方式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> game <span class="keyword">in</span> combinations(teams, <span class="number">2</span>):</span><br><span class="line"><span class="built_in">print</span> game</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;Packers&#x27;</span>, <span class="string">&#x27;49ers&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;Packers&#x27;</span>, <span class="string">&#x27;Ravens&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;Packers&#x27;</span>, <span class="string">&#x27;Patriots&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;49ers&#x27;</span>, <span class="string">&#x27;Ravens&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;49ers&#x27;</span>, <span class="string">&#x27;Patriots&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="string">&#x27;Ravens&#x27;</span>, <span class="string">&#x27;Patriots&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="False-True"><a href="#False-True" class="headerlink" title="False == True"></a>False == True</h1><p>比起实用技术来说这是一个很有趣的事，在python中，True和False是全局变量，因此:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">False</span> = <span class="literal">True</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">False</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;World&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Hello</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建一次性的、快速的小型web服务"><a href="#创建一次性的、快速的小型web服务" class="headerlink" title="创建一次性的、快速的小型web服务"></a>创建一次性的、快速的小型web服务</h1><p>python 内置模块可以创建 Web 服务:</p>
+<ul>
+<li>  For python 3.x : <code>python3 -m http.server</code></li>
+<li>  For python 2.x : <code>python -m SimpleHTTPServer</code></li>
+</ul>
+<p>有时候，我们需要在两台机器或服务之间做一些简便的、很基础的RPC之类的交互。 我们希望用一种简单的方式使用B程序调用A程序里的一个方法——有时是在另一台 机器上。仅内部使用。</p>
+<p>我并不鼓励将这里介绍的方法用在非内部的、一次性的编程中。我们可以使用一种 叫做XML-RPC的协议 (相对应的是这个Python库)，来做这种事情。</p>
+<p>下面是一个使用SimpleXMLRPCServer模块建立一个快速的小的文件读取服务器的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> SimpleXMLRPCServer <span class="keyword">import</span> SimpleXMLRPCServer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">file_reader</span>(<span class="params">file_name</span>):</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file_name, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">return</span> f.read()</span><br><span class="line"></span><br><span class="line">server = SimpleXMLRPCServer((<span class="string">&#x27;localhost&#x27;</span>, <span class="number">8000</span>))</span><br><span class="line">server.register_introspection_functions()</span><br><span class="line">server.register_function(file_reader)</span><br><span class="line">server.serve_forever()</span><br></pre></td></tr></table></figure>
+
+<p>客户端:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xmlrpclib</span><br><span class="line">proxy = xmlrpclib.ServerProxy(<span class="string">&#x27;http://localhost:8000/&#x27;</span>)</span><br><span class="line">proxy.file_reader(<span class="string">&#x27;/tmp/secret.txt&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="漂亮的打印出JSON"><a href="#漂亮的打印出JSON" class="headerlink" title="漂亮的打印出JSON"></a>漂亮的打印出JSON</h1><p>为了能让JSON数据表现的更友好，我们可以使用indent参数来输出漂亮的JSON。<br>当在控制台交互式编程或做日志时，这尤其有用:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> json</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(json.dumps(data))  <span class="comment"># No indention</span></span><br><span class="line">&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;OK&quot;</span>, <span class="string">&quot;count&quot;</span>: <span class="number">2</span>, <span class="string">&quot;results&quot;</span>: [&#123;<span class="string">&quot;age&quot;</span>: <span class="number">27</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Oz&quot;</span>, <span class="string">&quot;lactose_intolerant&quot;</span>: true&#125;, &#123;<span class="string">&quot;age&quot;</span>: <span class="number">29</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Joe&quot;</span>, <span class="string">&quot;lactose_intolerant&quot;</span>: false&#125;]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(json.dumps(data, indent=<span class="number">2</span>))  <span class="comment"># With indention</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;status&quot;</span>: <span class="string">&quot;OK&quot;</span>,</span><br><span class="line">  <span class="string">&quot;count&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="string">&quot;results&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;age&quot;</span>: <span class="number">27</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Oz&quot;</span>,</span><br><span class="line">      <span class="string">&quot;lactose_intolerant&quot;</span>: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;age&quot;</span>: <span class="number">29</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Joe&quot;</span>,</span><br><span class="line">      <span class="string">&quot;lactose_intolerant&quot;</span>: false</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样，使用内置的pprint模块，也可以让其它任何东西打印输出的更漂亮。</p>
+<h1 id="动态生成类的属性"><a href="#动态生成类的属性" class="headerlink" title="动态生成类的属性"></a>动态生成类的属性</h1><p>正确的操作应该是 <code>setattr( A, &#39;d&#39;, 1)</code> 或者 <code>setattr( a1.__class__, &#39;d&#39;, 1)</code></p>
+<p>要取得模块中的某个属性可以用 <code>getattr()</code> ，比如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="built_in">getattr</span>(m, <span class="string">&#x27;myclass&#x27;</span>)</span><br><span class="line">myobject = c()</span><br></pre></td></tr></table></figure>
+
+<h1 id="动态生成类"><a href="#动态生成类" class="headerlink" title="动态生成类"></a>动态生成类</h1><blockquote>
+<p><strong>important</strong></p>
+<p>This section is copy from<br><a target="_blank" rel="noopener" href="http://www.python8.org/a/fenleiwenzhang/yuyanjichu/2010/1001/566.html">http://www.python8.org/a/fenleiwenzhang/yuyanjichu/2010/1001/566.html</a></p>
+</blockquote>
+<p>方法一:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getObj</span>(<span class="params">name</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">eval</span>(name+<span class="string">&#x27;()&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>方法二:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="built_in">__import__</span>(<span class="string">&#x27;mymodule&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>但是要注意：如果myclass并不在mymodule的自动导出列表中（__all__），<br>则必须显式地导入，例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="built_in">__import__</span>(<span class="string">&#x27;mymodule&#x27;</span>, <span class="built_in">globals</span>(), <span class="built_in">locals</span>(), [<span class="string">&#x27;myclass&#x27;</span>])</span><br><span class="line">c = <span class="built_in">getattr</span>(m, <span class="string">&#x27;myclass&#x27;</span>)</span><br><span class="line">myobject = c()</span><br></pre></td></tr></table></figure>
+
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 动态生成类</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_object</span>(<span class="params">object_attribute</span>):</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">o</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;#class&#x27;</span> <span class="keyword">in</span> object_attribute.keys():</span><br><span class="line">        (module_name, class_name) = object_attribute[<span class="string">&#x27;#class&#x27;</span>].rsplit(<span class="string">&#x27;.&#x27;</span>, <span class="number">1</span>)</span><br><span class="line">        module_meta = <span class="built_in">__import__</span>(module_name)</span><br><span class="line">        class_meta = <span class="built_in">getattr</span>(module_meta, class_name)</span><br><span class="line">        o = class_meta()</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> object_attribute:</span><br><span class="line">        <span class="comment"># maybe should be, need test!!!!:</span></span><br><span class="line">        <span class="comment"># if str(type(object_attribute[k])) == &#x27;&lt;type \&#x27;dict\&#x27;&gt;&#x27;:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">str</span>(<span class="built_in">type</span>(object_attribute[k])) == <span class="string">&#x27;&lt;class \&#x27;dict\&#x27;&gt;&#x27;</span>:</span><br><span class="line">            <span class="built_in">setattr</span>(o, k, create_object(object_attribute[k]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">setattr</span>(o, k, object_attribute[k])</span><br><span class="line">    <span class="keyword">return</span> o</span><br></pre></td></tr></table></figure>
+
+<p>example.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">class1</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print1</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;studio_name:&#x27;</span> + <span class="built_in">str</span>(self.studio))</span><br></pre></td></tr></table></figure>
+
+
+<p>class class2:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print2</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;room:&#x27;</span> + <span class="built_in">str</span>(self.room))</span><br></pre></td></tr></table></figure>
+
+<p>test.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    dict_object = &#123;<span class="string">&quot;#class&quot;</span>: <span class="string">&quot;example.class1&quot;</span>,</span><br><span class="line">                   <span class="string">&quot;studio&quot;</span>: <span class="string">&quot;demonstudio&quot;</span>,</span><br><span class="line">                   <span class="string">&quot;office&quot;</span>: &#123;<span class="string">&quot;#class&quot;</span>: <span class="string">&quot;example.class2&quot;</span>,</span><br><span class="line">                              <span class="string">&quot;floor&quot;</span>: <span class="number">5</span>,</span><br><span class="line">                              <span class="string">&quot;room&quot;</span>: <span class="string">&quot;501&quot;</span></span><br><span class="line">                              &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">    o = create_object(dict_object)</span><br><span class="line">    o.print1()</span><br><span class="line">    o.office.print2()</span><br><span class="line">    <span class="built_in">print</span>(o.studio)</span><br><span class="line">    <span class="built_in">print</span>(o.office.floor)</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/note/" rel="tag"># note</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2013/01/27/rst-sphinx-pdf/" rel="prev" title="使用 Sphinx 生成 PDF 文件">
+                  <i class="fa fa-chevron-left"></i> 使用 Sphinx 生成 PDF 文件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/python-note-800-logger" rel="next" title="Python note 800 - logger">
+                  Python note 800 - logger <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

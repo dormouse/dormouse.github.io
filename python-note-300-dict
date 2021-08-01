@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="合并两个字典Python 3.5 或者以后： 1z &#x3D; &amp;#123;**x, **y&amp;#125;  Python 2 、或 3.4 以前： 12z &#x3D; x.copy()z.update(y)  推导和列表推导类似，字典同样可以推导: 123teams &#x3D; [&quot;Packers&quot;, &quot;49ers&quot;, &quot;Ravens&quot;, &quot;Patri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Note 300 - Dict">
+<meta property="og:url" content="https://dormouse.github.io/python-note-300-dict">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="合并两个字典Python 3.5 或者以后： 1z &#x3D; &amp;#123;**x, **y&amp;#125;  Python 2 、或 3.4 以前： 12z &#x3D; x.copy()z.update(y)  推导和列表推导类似，字典同样可以推导: 123teams &#x3D; [&quot;Packers&quot;, &quot;49ers&quot;, &quot;Ravens&quot;, &quot;Patri">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-02-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-28T12:45:32.525Z">
+<meta property="article:author" content="Dormouse Young">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="dict">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dormouse.github.io/python-note-300-dict">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dormouse.github.io/python-note-300-dict","path":"/python-note-300-dict","title":"Python Note 300 - Dict"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python Note 300 - Dict | Dormouse Hole</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E5%AD%97%E5%85%B8"><span class="nav-number">1.</span> <span class="nav-text">合并两个字典</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">推导</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">获取元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%88%86%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">元素分组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#list-%E8%BD%AC-dict"><span class="nav-number">5.</span> <span class="nav-text">list 转 dict</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dict-%E8%BD%AC-class"><span class="nav-number">6.</span> <span class="nav-text">dict 转 class</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">7.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%8E%92%E5%BA%8F"><span class="nav-number">7.1.</span> <span class="nav-text">按键排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E5%80%BC%E6%8E%92%E5%BA%8F"><span class="nav-number">7.2.</span> <span class="nav-text">按值排序</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-300-dict">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python Note 300 - Dict
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-28 20:45:32" itemprop="dateModified" datetime="2021-03-28T20:45:32+08:00">2021-03-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h1><p>Python 3.5 或者以后：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = &#123;**x, **y&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Python 2 、或 3.4 以前：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x.copy()</span><br><span class="line">z.update(y)</span><br></pre></td></tr></table></figure>
+
+<h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><p>和列表推导类似，字典同样可以推导:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> &#123;key: value <span class="keyword">for</span> value, key <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">&#x27;49ers&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Ravens&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Patriots&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;Packers&#x27;</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+<h1 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h1><p>使用字典的 get 方法可以安全的获得字典的值，第二个参数是缺省值:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;user&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Max&#x27;</span>, <span class="string">&#x27;three&#x27;</span>: <span class="number">4</span>&#125;</span><br><span class="line">is_admin = data.get(<span class="string">&#x27;admin&#x27;</span>, <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="元素分组"><a href="#元素分组" class="headerlink" title="元素分组"></a>元素分组</h1><p>和上面类似，先创建 Persons:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, age</span>):</span></span><br><span class="line">        self.age = age</span><br></pre></td></tr></table></figure>
+
+<p>persons = [Person(age) for age in (78, 14, 78, 42, 14)]<br>如果现在我们要按照年龄分组的话，一种方法是使用 in 操作符:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">persons_by_age = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> person <span class="keyword">in</span> persons:</span><br><span class="line">    age = person.age</span><br><span class="line">    <span class="keyword">if</span> age <span class="keyword">in</span> persons_by_age:</span><br><span class="line">        persons_by_age[age].append(person)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        persons_by_age[age] = [person]</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="built_in">len</span>(persons_by_age[<span class="number">78</span>]) == <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>相比较之下，使用 collections 模块中 defaultdict 方法的途径可读性更好:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line">persons_by_age = defaultdict(<span class="built_in">list</span>)</span><br><span class="line"><span class="keyword">for</span> person <span class="keyword">in</span> persons:</span><br><span class="line">    persons_by_age[person.age].append(person)</span><br></pre></td></tr></table></figure>
+
+<p>defaultdict 将会利用接受的参数为每个不存在的 key 创建对应的值，这里我们传递的是 list，所以它将为每个 key 创建一个 list 类型的值。 假如需要建立嵌套的defaultdict，d = defaultdict(defaultdict)行不通，正确的方法是d = defaultdict(lambda:defaultdict(int))。</p>
+<h1 id="list-转-dict"><a href="#list-转-dict" class="headerlink" title="list 转 dict"></a>list 转 dict</h1><p>将 [‘1:a’,’2:b’,’3:c’] 转换为 {‘1′: ‘a’, ‘3′: ‘c’, ‘2′: ‘b’}:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>(item.split(<span class="string">&#x27;:&#x27;</span>)[:<span class="number">2</span>] <span class="keyword">for</span> item <span class="keyword">in</span> b)</span><br></pre></td></tr></table></figure>
+
+<h1 id="dict-转-class"><a href="#dict-转-class" class="headerlink" title="dict 转 class"></a>dict 转 class</h1><p>方法如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Struct</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, **entries</span>):</span></span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> entries.items():</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">isinstance</span>(v, <span class="built_in">dict</span>):</span><br><span class="line">                entries[k] = Struct(**v)</span><br><span class="line">                <span class="built_in">print</span> entries[k]</span><br><span class="line">        self.__dict__.update(entries)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">        args = &#123;<span class="string">&#x27;a&#x27;</span>: &#123;<span class="string">&#x27;cola&#x27;</span>: [<span class="string">&#x27;xm&#x27;</span>, <span class="string">&#x27;xb&#x27;</span>]&#125;,</span><br><span class="line">                <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>&#125;</span><br><span class="line">        s = Struct(**args)</span><br><span class="line">        <span class="built_in">print</span> s.a</span><br><span class="line">        <span class="built_in">print</span> s.a.cola</span><br><span class="line">        <span class="built_in">print</span> s.b</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="按键排序"><a href="#按键排序" class="headerlink" title="按键排序"></a>按键排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">price = &#123;<span class="string">&#x27;apple&#x27;</span>: <span class="number">75.00</span>, <span class="string">&#x27;orange&#x27;</span>: <span class="number">65.00</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="number">55.00</span>&#125;</span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> <span class="built_in">sorted</span>(price):</span><br><span class="line">    <span class="built_in">print</span>(key, <span class="string">&#x27;-&gt;&#x27;</span>, price[key])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apple -&gt; 75.0</span><br><span class="line">banana -&gt; 55.0</span><br><span class="line">orange -&gt; 65.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="按值排序"><a href="#按值排序" class="headerlink" title="按值排序"></a>按值排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">price = &#123;<span class="string">&#x27;apple&#x27;</span>: <span class="number">75.00</span>, <span class="string">&#x27;orange&#x27;</span>: <span class="number">65.00</span>, <span class="string">&#x27;banana&#x27;</span>: <span class="number">55.00</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">by_value</span>(<span class="params">item</span>):</span></span><br><span class="line">    <span class="keyword">return</span> item[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> <span class="built_in">sorted</span>(price.items(), key=by_value):</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;-&gt;&#x27;</span>, v)</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> <span class="built_in">sorted</span>(price.items(), key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>]):</span><br><span class="line">    <span class="built_in">print</span>(k, <span class="string">&#x27;-&gt;&#x27;</span>, v)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">banana -&gt; 55.0</span><br><span class="line">orange -&gt; 65.0</span><br><span class="line">apple -&gt; 75.0</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/dict/" rel="tag"># dict</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/python-note-100-file" rel="prev" title="Python Note 100 - File">
+                  <i class="fa fa-chevron-left"></i> Python Note 100 - File
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/06/29/write-blog-with-hexo/" rel="next" title="使用 Hexo 写博客">
+                  使用 Hexo 写博客 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

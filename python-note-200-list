@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="列表推导（过滤）以过滤偶数为例，一般方法: 12345numbers &#x3D; [1,2,3,4,5,6]even &#x3D; []for number in numbers:    if number%2 &#x3D;&#x3D; 0:        even.append(number)  推导方式过滤: 12numbers &#x3D; [1,2,3,4,5,6]even &#x3D; [number for number in numbers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Note 200 - List">
+<meta property="og:url" content="https://dormouse.github.io/python-note-200-list">
+<meta property="og:site_name" content="Dormouse Hole">
+<meta property="og:description" content="列表推导（过滤）以过滤偶数为例，一般方法: 12345numbers &#x3D; [1,2,3,4,5,6]even &#x3D; []for number in numbers:    if number%2 &#x3D;&#x3D; 0:        even.append(number)  推导方式过滤: 12numbers &#x3D; [1,2,3,4,5,6]even &#x3D; [number for number in numbers">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-02-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-03-17T01:56:07.915Z">
+<meta property="article:author" content="Dormouse Young">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="list">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dormouse.github.io/python-note-200-list">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dormouse.github.io/python-note-200-list","path":"/python-note-200-list","title":"Python Note 200 - List"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python Note 200 - List | Dormouse Hole</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Dormouse Hole</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">The new hole since 2018</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%EF%BC%88%E8%BF%87%E6%BB%A4%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">列表推导（过滤）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%80%92%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">倒序列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="nav-number">3.</span> <span class="nav-text">判断一个列表是否为空</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E8%BF%AD%E4%BB%A3%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">同时迭代两个列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%A6%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3"><span class="nav-number">6.</span> <span class="nav-text">带索引的列表迭代</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8%E7%9A%84%E5%80%BC"><span class="nav-number">7.</span> <span class="nav-text">初始化列表的值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">8.</span> <span class="nav-text">列表转换为字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E7%9A%84%E5%AD%90%E9%9B%86"><span class="nav-number">9.</span> <span class="nav-text">获取列表的子集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E7%9A%84%E5%B7%AE"><span class="nav-number">10.</span> <span class="nav-text">获取两个列表的差</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8"><span class="nav-number">11.</span> <span class="nav-text">拷贝一个列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-number">12.</span> <span class="nav-text">移除列表中的元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8"><span class="nav-number">13.</span> <span class="nav-text">连接两个列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%8E%B7%E5%8F%96%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="nav-number">14.</span> <span class="nav-text">随机获取列表中的某个元素</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dormouse Young</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/python-note-200-list">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python Note 200 - List
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2019-03-17 09:56:07" itemprop="dateModified" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="列表推导（过滤）"><a href="#列表推导（过滤）" class="headerlink" title="列表推导（过滤）"></a>列表推导（过滤）</h1><p>以过滤偶数为例，一般方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = []</span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numbers:</span><br><span class="line">    <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        even.append(number)</span><br></pre></td></tr></table></figure>
+
+<p>推导方式过滤:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">even = [number <span class="keyword">for</span> number <span class="keyword">in</span> numbers <span class="keyword">if</span> number%<span class="number">2</span> == <span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h1 id="倒序列表"><a href="#倒序列表" class="headerlink" title="倒序列表"></a>倒序列表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst.reverse()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst</span><br><span class="line">[<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[::-<span class="number">1</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">reversed</span>(lst))</span><br><span class="line">[<span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="判断一个列表是否为空"><a href="#判断一个列表是否为空" class="headerlink" title="判断一个列表是否为空"></a>判断一个列表是否为空</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> mylist:</span><br><span class="line">    <span class="comment"># Do something with my list</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># The list is empty</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>列表排序有两种方式，一种是列表自带的方式 sort，一种是内建函数 sorted 。<br>复杂的数据类型可通过指定 key 参数进行排序。<br>由字典构成的列表，根据字典元素中的 age 字段进行排序:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">items = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line">items.sort(key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(items)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[&#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>&#125;, &#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>&#125;, &#123;<span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>, <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>sort 方法用于对原列表进行重新排序，指定 key 参数，key 是匿名函数， item<br>是列表中的字典元素，我们根据字典中的age进行排序，默认是按升序排列， 指定<br>reverse=True 按降序排列:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">items.sort(key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>), reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>如果不希望改变原列表，而是生成一个新的有序列表对象，那么可以内置函数<br>sorted ， 该函数返回新列表:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">items = [&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;,</span><br><span class="line">         &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line">new_items = <span class="built_in">sorted</span>(items, key=<span class="keyword">lambda</span> item: item.get(<span class="string">&quot;age&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(items)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(new_items)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Bart&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">10</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;cater&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">20</span>&#125;, &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Homer&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">39</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<h1 id="同时迭代两个列表"><a href="#同时迭代两个列表" class="headerlink" title="同时迭代两个列表"></a>同时迭代两个列表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nfc = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>]</span><br><span class="line">afc = [<span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> teama, teamb <span class="keyword">in</span> <span class="built_in">zip</span>(nfc, afc):</span><br><span class="line">    <span class="built_in">print</span> teama + <span class="string">&quot; vs. &quot;</span> + teamb</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Packers vs. Ravens</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>49ers vs. Patriots</span><br></pre></td></tr></table></figure>
+
+<h1 id="带索引的列表迭代"><a href="#带索引的列表迭代" class="headerlink" title="带索引的列表迭代"></a>带索引的列表迭代</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> index, team <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams):</span><br><span class="line">    <span class="built_in">print</span> index, team</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0</span> Packers</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> 49ers</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> Ravens</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> Patriots</span><br></pre></td></tr></table></figure>
+
+<p>enumerate 还可以指定元素的第一个元素从几开始，默认是0，也可以指定从1开始：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> index, team <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams, start=<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span> index, team</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> Packers</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> 49ers</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> Ravens</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">4</span> Patriots</span><br></pre></td></tr></table></figure>
+
+<h1 id="初始化列表的值"><a href="#初始化列表的值" class="headerlink" title="初始化列表的值"></a>初始化列表的值</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">items = [<span class="number">0</span>]*<span class="number">3</span></span><br><span class="line"><span class="built_in">print</span> items</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="列表转换为字符串"><a href="#列表转换为字符串" class="headerlink" title="列表转换为字符串"></a>列表转换为字符串</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;, &quot;</span>.join(teams)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Packers, 49ers, Ravens, Patriots&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="获取列表的子集"><a href="#获取列表的子集" class="headerlink" title="获取列表的子集"></a>获取列表的子集</h1><p>有时，你只需要列表中的部分元素，这里是一些获取列表子集的方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="comment">#前3个</span></span><br><span class="line"><span class="built_in">print</span> x[:<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="comment">#中间4个</span></span><br><span class="line"><span class="built_in">print</span> x[<span class="number">1</span>:<span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment">#最后3个</span></span><br><span class="line"><span class="built_in">print</span> x[<span class="number">3</span>:]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="comment">#奇数项</span></span><br><span class="line"><span class="built_in">print</span> x[::<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>]</span><br><span class="line"><span class="comment">#偶数项</span></span><br><span class="line"><span class="built_in">print</span> x[<span class="number">1</span>::<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="获取两个列表的差"><a href="#获取两个列表的差" class="headerlink" title="获取两个列表的差"></a>获取两个列表的差</h1><p>示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>lista = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>listb = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">set</span>(lista)-<span class="built_in">set</span>(listb))</span><br><span class="line">[<span class="number">9</span>, <span class="number">3</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="拷贝一个列表"><a href="#拷贝一个列表" class="headerlink" title="拷贝一个列表"></a>拷贝一个列表</h1><p>第一种方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_list = old_list[:]</span><br></pre></td></tr></table></figure>
+
+<p>第二种方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_list = <span class="built_in">list</span>(old_list)</span><br></pre></td></tr></table></figure>
+
+<p>第三种方法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="comment"># 浅拷贝</span></span><br><span class="line">new_list = copy.copy(old_list)</span><br><span class="line"><span class="comment"># 深拷贝</span></span><br><span class="line">new_list = copy.deepcopy(old_list)</span><br></pre></td></tr></table></figure>
+
+<h1 id="移除列表中的元素"><a href="#移除列表中的元素" class="headerlink" title="移除列表中的元素"></a>移除列表中的元素</h1><p>删除列表中的元素有三种方式</p>
+<p>remove 移除某个元素，而且只能移除第一次出现的元素:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.remove(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果要移除的元素不在列表中，则抛出 ValueError 异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.remove(<span class="number">7</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ValueError: <span class="built_in">list</span>.remove(x): x <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">list</span>·</span><br></pre></td></tr></table></figure>
+
+<p>del 根据指定的位置移除某元素:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 移除第一个元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a[<span class="number">1</span>]</span><br><span class="line">[<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当超出列表的下表索引时，抛出IndexError的异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a[<span class="number">7</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: <span class="built_in">list</span> assignment index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<p>pop 与 del 类似，但是 pop 方法可以返回移除的元素:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">4</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.pop(<span class="number">1</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 同样，当超出列表的下表索引时，抛出IndexError的异常</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.pop(<span class="number">7</span>)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">IndexError: pop index out of <span class="built_in">range</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="连接两个列表"><a href="#连接两个列表" class="headerlink" title="连接两个列表"></a>连接两个列表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">listone = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">listtwo = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">mergedlist = listone + listtwo</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(mergelist)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="随机获取列表中的某个元素"><a href="#随机获取列表中的某个元素" class="headerlink" title="随机获取列表中的某个元素"></a>随机获取列表中的某个元素</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">items = [<span class="number">8</span>, <span class="number">23</span>, <span class="number">45</span>, <span class="number">12</span>, <span class="number">78</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">78</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">45</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>random.choice(items)</span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/note/" rel="tag"># note</a>
+              <a href="/tags/list/" rel="tag"># list</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/02/13/python-note/400str/" rel="prev" title="Python Note 400 - String">
+                  <i class="fa fa-chevron-left"></i> Python Note 400 - String
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/python-note-100-file" rel="next" title="Python Note 100 - File">
+                  Python Note 100 - File <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dormouse Young</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
