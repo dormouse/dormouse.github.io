@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dormouse.github.io","root":"/","images":"/images","scheme":"Mist","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dormouse Hole">
 <meta property="og:url" content="https://dormouse.github.io/page/2/index.html">
@@ -227,6 +227,13 @@
 
       <time title="Created: 2019-03-17 09:56:07" itemprop="dateCreated datePublished" datetime="2019-03-17T09:56:07+08:00">2019-03-17</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-08 19:18:06" itemprop="dateModified" datetime="2021-08-08T19:18:06+08:00">2021-08-08</time>
+      </span>
 
   
 </div>
@@ -238,8 +245,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在 Python 开发中，尤其是在涉及 web 开发时，不可避免会与 <a target="_blank" rel="noopener" href="http://json.org/">JSON （JavaScript Object Notation）</a> 打交道。本文主要尝试介绍如何在 Python 中使用 JSON 。</p>
-<p>在 Python 3 的官方文档中关于 JSON 操作的函数主要有 4 个，它们分别是 <code>json.dump()</code> 、 <code>json.load()</code> 、 <code>json.dumps()</code> 和<code>json.loads()</code> 。 <code>json.dump()</code> 和 <code>json.dumps()</code> 的功能是将 Python 对象进行编码（ encoder ） ，转化为 JSON 格式；而 <code>json.load()</code> 和 <code>json.loads()</code> 则反之，对 JSON 格式对象解码（ ecoder ），转化为 Python 对象。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在 Python 开发中，尤其是在涉及 web 开发时，不可避免会与 <a target="_blank" rel="noopener" href="http://json.org/">JSON （JavaScript Object Notation）</a> 打交道。本文主要尝试介绍如何在 Python 中使用 JSON 。</p>
+<p>在 Python 3 的官方文档中关于 JSON 操作的函数主要有 4 个，它们分别是 <code>json.dump()</code> 、 <code>json.load()</code> 、 <code>json.dumps()</code> 和<code>json.loads()</code> 。 <code>json.dump()</code> 和 <code>json.dumps()</code> 的功能是将 Python 对象进行编码（ encoder ） ，转化为 JSON 格式；而 <code>json.load()</code> 和 <code>json.loads()</code> 则反之，对 JSON 格式对象解码（ decoder ），转化为 Python 对象。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/17/python-json/#more" rel="contents">
@@ -533,100 +540,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2017/02/13/python-note/300dict/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dormouse Young">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dormouse Hole">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/02/13/python-note/300dict/" class="post-title-link" itemprop="url">Python Note 300 - Dict</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-08-01 21:11:49" itemprop="dateModified" datetime="2021-08-01T21:11:49+08:00">2021-08-01</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h1><p>Python 3.5 或者以后：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = &#123;**x, **y&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Python 2 、或 3.4 以前：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x.copy()</span><br><span class="line">z.update(y)</span><br></pre></td></tr></table></figure>
-
-<h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><p>和列表推导类似，字典同样可以推导:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> &#123;key: value <span class="keyword">for</span> value, key <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">&#x27;49ers&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Ravens&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Patriots&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;Packers&#x27;</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/02/13/python-note/300dict/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2017/02/13/python-note/400str/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,6 +687,100 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/02/13/python-note/500datetime/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dormouse.github.io/2017/02/13/python-note/300dict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dormouse Young">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dormouse Hole">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/02/13/python-note/300dict/" class="post-title-link" itemprop="url">Python Note 300 - Dict</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-13T00:00:00+08:00">2017-02-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-08-01 21:11:49" itemprop="dateModified" datetime="2021-08-01T21:11:49+08:00">2021-08-01</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="合并两个字典"><a href="#合并两个字典" class="headerlink" title="合并两个字典"></a>合并两个字典</h1><p>Python 3.5 或者以后：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = &#123;**x, **y&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Python 2 、或 3.4 以前：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x.copy()</span><br><span class="line">z.update(y)</span><br></pre></td></tr></table></figure>
+
+<h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><p>和列表推导类似，字典同样可以推导:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">teams = [<span class="string">&quot;Packers&quot;</span>, <span class="string">&quot;49ers&quot;</span>, <span class="string">&quot;Ravens&quot;</span>, <span class="string">&quot;Patriots&quot;</span>]</span><br><span class="line"><span class="built_in">print</span> &#123;key: value <span class="keyword">for</span> value, key <span class="keyword">in</span> <span class="built_in">enumerate</span>(teams)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">&#x27;49ers&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Ravens&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Patriots&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;Packers&#x27;</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/02/13/python-note/300dict/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
